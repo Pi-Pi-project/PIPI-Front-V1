@@ -1,0 +1,28 @@
+{
+  "name": "PIPI-Front-V1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Pi-Pi-project/PIPI-Front-V1",
+  "author": "YeongG <yeonggil223@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.8.24",
+    "@types/react-dom": "^16.0.5",
+    "@types/webpack": "4.1.4",
+    "html-webpack-plugin": "^4.5.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.4.3",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@types/styled-components": "^5.1.4",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^5.2.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open --hot --port 5000"
+  }
+}
