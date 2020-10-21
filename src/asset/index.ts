@@ -1,1 +1,1 @@
-export { default as LoginLeftPicture } from "./Login/loginLeftPicture.svg";
+export { default as formBannerJpg } from "./form/formBanner.jpg";
