@@ -4,11 +4,11 @@ import * as S from "../../Form/styles";
 
 const FormLeft: FC = () => {
   return (
-    <S.LoginLeftDiv>
+    <S.FormLeftDivBasic>
       <div>
         <img src={formBannerJpg} />
       </div>
-    </S.LoginLeftDiv>
+    </S.FormLeftDivBasic>
   );
 };
 
