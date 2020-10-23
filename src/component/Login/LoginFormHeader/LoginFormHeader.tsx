@@ -1,11 +1,11 @@
 import React, { FC } from "react";
-import * as S from "../../Form/styles";
+import * as S from "../styles";
 
 const LoginFormHeader: FC = () => {
   return (
     <S.LoginHeader>
       <S.LoginTitle>LOGIN</S.LoginTitle>
-      <S.SubTitle>Welcome to PiPi!</S.SubTitle>
+      <S.LoginSubTitle>Welcome to PiPi!</S.LoginSubTitle>
     </S.LoginHeader>
   );
 };
