@@ -96,39 +96,3 @@ export const SubmitButton = styled.button`
     color: white;
   }
 `;
-
-export const LoginHeader = styled(Header)`
-  height: 250px;
-`;
-export const LoginBody = styled(Body)`
-  width: 70%;
-  height: 300px;
-`;
-export const LoginLeftDiv = styled(FormLeftDivBasic)``;
-export const LoginRightDiv = styled(FormRightDivBasic)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-export const ForgotPassword = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  color: rgb(59, 59, 59, 0.48);
-  font-weight: bold;
-`;
-
-export const LoginFooter = styled(Footer)`
-  height: 200px;
-
-  > div {
-    justify-content: center;
-  }
-`;
-
-export const LoginInput = styled(Input)``;
-
-export const LoginTitle = styled(Title)``;
-export const LoginButton = styled(SubmitButton)`
-  width: 230px;
-`;

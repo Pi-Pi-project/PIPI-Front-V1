@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import * as S from "../../Form/styles";
+import * as S from "../styles";
 import LoginFormBody from "../LoginFormBody/LoginFormBody";
 import LoginFormFooter from "../LoginFormFooter/LoginFormFooter";
 import LoginFormHeader from "../LoginFormHeader/LoginFormHeader";
