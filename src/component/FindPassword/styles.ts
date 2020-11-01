@@ -10,12 +10,11 @@ export const FindPasswordSubTitle = styled(B.SubTitle)``;
 
 export const FindPasswordBody = styled(B.Body)`
   height: 300px;
-
-  > div {
-    width: 70%;
-  }
 `;
 export const FindPasswordInput = styled(B.Input)``;
+export const FindPasswordP = styled(B.P)`
+  margin-bottom: 50px;
+`;
 
 export const FindPasswordFooter = styled(B.Footer)`
   height: 250px;
