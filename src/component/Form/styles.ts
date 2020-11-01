@@ -16,11 +16,10 @@ export const FormRightDivBasic = styled.div`
 
 export const Container = styled.div`
   display: flex;
+  height: 100%;
   * {
     font-family: "Noto Sans KR";
   }
-  min-height: 100vh;
-  min-width: 1900px;
   > div {
     display: flex;
     justify-content: center;
@@ -78,8 +77,15 @@ export const Input = styled.input`
     color: rgb(59, 59, 59, 0.48);
   }
   & + & {
-    margin-top: 20px;
+    margin-top: 30px;
   }
+`;
+
+export const P = styled.p`
+  font-size: 15px;
+  text-align: center;
+  color: #3b3b3b;
+  font-weight: bold;
 `;
 
 export const SubmitButton = styled.button`
