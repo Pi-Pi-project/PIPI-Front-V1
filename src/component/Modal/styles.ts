@@ -14,6 +14,7 @@ export const Container = styled.div`
 export const Modal = styled.div`
   width: 30%;
   height: 35%;
+  text-align: center;
   border: 1px solid #61bfad;
   border-radius: 30px;
   padding: 10px;
@@ -27,12 +28,12 @@ export const Modal = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 40px;
+  font-size: 25px;
   font-weight: bold;
 `;
 
 export const SubTitle = styled.div`
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
 `;
 
