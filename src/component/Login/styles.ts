@@ -28,7 +28,9 @@ export const LoginFooter = styled(B.Footer)`
     justify-content: center;
   }
 `;
-export const LoginInput = styled(B.Input)``;
+export const LoginInput = styled(B.Input)`
+  width: 100%;
+`;
 export const LoginTitle = styled(B.Title)``;
 export const LoginSubTitle = styled(B.SubTitle)``;
 export const LoginButton = styled(B.SubmitButton)`
