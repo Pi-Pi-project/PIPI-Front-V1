@@ -1,15 +1,24 @@
 import React, { FC } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import { FindPasswordRouter, LoginRouter } from "./routing";
-import { GlobalStyle } from "./style/GlobalStyle";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import FormModal from "./component/Modal/FormModal";
+import { FindPasswordRouter, LoginedRouter, LoginRouter } from "./routing";
+import RegisterRouter from "./routing/RegisterRouter";
+import { GlobalStyle, GlobalContainer } from "./style/GlobalStyle";
 
 const App: FC = () => {
   return (
-    <BrowserRouter>
-      <GlobalStyle />
-      <Route path="/login" component={LoginRouter} />
-      <Route path="/password" component={FindPasswordRouter} />
-    </BrowserRouter>
+    <GlobalContainer>
+      <BrowserRouter>
+        <GlobalStyle />
+        <FormModal />
+        <Switch>
+          <Route path="/login" component={LoginRouter} />
+          <Route path="/password" component={FindPasswordRouter} />
+          <Route path="/register" component={RegisterRouter} />
+          <Route component={LoginedRouter} />
+        </Switch>
+      </BrowserRouter>
+    </GlobalContainer>
   );
 };
 
