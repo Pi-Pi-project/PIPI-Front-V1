@@ -29,7 +29,8 @@ module.exports = {
   },
   output: {
     filename: "bundle.min.js",
-    path: path.resolve(__dirname, "AWS")
+    path: path.resolve(__dirname, "AWS"),
+    publicPath: "/"
   },
   plugins: [
     new HtmlWebpackPlugin({
