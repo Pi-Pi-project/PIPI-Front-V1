@@ -1,4 +1,4 @@
-import { SkillData } from "../../../component/Register/RegisterFormBody/RegisterFormBody";
+import { SkillData } from "../../../lib/static";
 
 const UPDATE_INPUT = "register/UPDATE_INPUT" as const;
 const CHECK_EMAIL_SAGA = "register/CHECK_EMAIL_SAGA" as const;

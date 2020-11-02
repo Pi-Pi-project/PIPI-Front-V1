@@ -1,5 +1,5 @@
+import { SkillData } from "../../../lib/static";
 import RegisterActionType, { registerAction } from "../../action/register";
-import { SkillData } from "../../../component/Register/RegisterFormBody/RegisterFormBody";
 
 interface RegisterReducerState {
   skills: SkillData[];
@@ -48,6 +48,9 @@ const registerReducer = (
       };
     }
     case registerAction.SET_SKILLS: {
+      if (state.skills.includes(action.payload)) {
+        return state;
+      }
       return {
         ...state,
         skills: state.skills.concat(action.payload)
