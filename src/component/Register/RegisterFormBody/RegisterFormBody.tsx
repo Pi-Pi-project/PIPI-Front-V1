@@ -3,35 +3,10 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { checkEnterKeyCode } from "../../../lib/func";
+import { SkillData, skillDataArray } from "../../../lib/static";
 import { registerActionCreater } from "../../../module/action/register";
 import { StoreType } from "../../../module/reducer";
 import * as S from "../styles";
-
-export interface SkillData {
-  searchName: string;
-  showName: string;
-  src: string;
-}
-
-const skillData: SkillData[] = [
-  {
-    searchName: "타입스크립트",
-    showName: "Typescript",
-    src:
-      "https://d1telmomo28umc.cloudfront.net/media/public/badges/typescript.png"
-  },
-  {
-    searchName: "자바스크립트",
-    showName: "Javascript",
-    src: "https://d1telmomo28umc.cloudfront.net/media/public/badges/js.png"
-  },
-  {
-    searchName: "html",
-    showName: "html",
-    src:
-      "https://d1telmomo28umc.cloudfront.net/media/public/badges/html5_1IJr1hb.png"
-  }
-];
 
 const RegisterFormBody: FC = () => {
   const dispatch = useDispatch();
@@ -169,7 +144,7 @@ const RegisterFormBody: FC = () => {
             />
             {skill && (
               <S.SearchSkill>
-                {skillData
+                {skillDataArray
                   .filter(data => data.searchName.includes(skill))
                   .map(data => (
                     <div
