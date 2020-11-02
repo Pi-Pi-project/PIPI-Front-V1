@@ -3,14 +3,14 @@ import modal from "./modal";
 import login from "./login";
 import password from "./password";
 import register from "./register";
-
-console.log(register);
+import board from "./board";
 
 const rootReducer = combineReducers({
   modal,
   login,
   password,
-  register
+  register,
+  board
 });
 
 export type StoreType = ReturnType<typeof rootReducer>;
