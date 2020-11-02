@@ -1,6 +1,4 @@
 import React, { FC } from "react";
-import { useCallback } from "react";
-import { useHistory } from "react-router";
 import { magnifyingIconSvg } from "../../../asset";
 import { LoginedContainer } from "../../../style/GlobalStyle";
 import * as S from "./styles";
