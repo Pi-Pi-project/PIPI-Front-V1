@@ -19,6 +19,8 @@ export const RegisterP = styled(B.P)`
 `;
 export const MySkills = styled.div`
   width: 100%;
+  max-width: 396px;
+  overflow-y: auto;
   background-color: white;
   margin-bottom: 30px;
   min-height: 100px;
