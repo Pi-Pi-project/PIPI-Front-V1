@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { Route, Switch } from "react-router";
-import { Login } from "../component";
+import { LoginContainer } from "../container";
 
 const LoginRouter: FC = () => {
   return (
     <Switch>
-      <Route exact path="/login" component={Login} />
+      <Route exact path="/login" component={LoginContainer} />
     </Switch>
   );
 };
