@@ -3,11 +3,13 @@ import loginActionType, { loginAction } from "../../action/login";
 interface loginReducerState {
   id: string;
   password: string;
+  successLogin: boolean;
 }
 
 const initalState: loginReducerState = {
   id: "",
-  password: ""
+  password: "",
+  successLogin: false
 };
 
 const loginReducer = (
@@ -20,6 +22,12 @@ const loginReducer = (
       return {
         ...state,
         [name as "id" | "password"]: value
+      };
+    }
+    case loginAction.SUCCESS_LOGIN: {
+      return {
+        ...state,
+        successLogin: true
       };
     }
     default: {

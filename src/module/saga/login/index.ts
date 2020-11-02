@@ -14,6 +14,8 @@ function* requestLoginSaga() {
 
     window.localStorage.setItem(JWT_TOKEN, accessToken);
     window.localStorage.setItem(REFRESH_TOKEN, refreshToken);
+
+    yield put(loginActionCreater.successLogin());
   } catch (errStatus) {
     switch (errStatus) {
       case 400:
