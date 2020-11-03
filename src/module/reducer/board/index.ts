@@ -51,7 +51,7 @@ const boardReducer = (
         ...state,
         boardList: {
           isLoading: true,
-          list: action.payload,
+          list: state.boardList.list.concat(action.payload),
           page: state.boardList.page + 1
         }
       };
