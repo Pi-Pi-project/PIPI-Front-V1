@@ -37,6 +37,9 @@ export const SkillImg = styled.div<{ src: string }>`
   background: url(${props => props.src}) no-repeat;
   background-position: center;
   background-size: cover;
+  & + & {
+    margin-left: 10px;
+  }
   width: 50px;
   height: 50px;
 `;
@@ -74,6 +77,8 @@ export const ProjectName = styled.div`
 
 export const SkillSets = styled.div`
   flex: 1;
+  display: flex;
+  align-items: center;
 `;
 
 export const SKillImg = styled.div``;
