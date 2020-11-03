@@ -6,6 +6,5 @@ export const Container = styled.div`
   max-height: 690px;
   overflow-y: auto;
   ::-webkit-scrollbar {
-    display: none;
   }
 `;
