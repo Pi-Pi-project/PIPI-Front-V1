@@ -38,6 +38,11 @@ export const skillDataArray: SkillData[] = [
     showName: "Nodejs",
     src:
       "https://d1telmomo28umc.cloudfront.net/media/public/badges/nodeJSBadge.png"
+  },
+  {
+    searchName: "springboot",
+    showName: "SpringBoot",
+    src: "https://miro.medium.com/max/300/1*J9d-VtiLfN9APIQgWTP9ow.png"
   }
 ];
 
