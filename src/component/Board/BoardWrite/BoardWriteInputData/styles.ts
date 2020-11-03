@@ -41,6 +41,7 @@ export const BannerImg = styled.div`
   max-height: 240px;
   width: 100%;
   text-align: center;
+  box-sizing: border-box;
   img {
     height: 100%;
   }
@@ -56,10 +57,11 @@ export const BoardInput = styled.input`
   padding-bottom: 5px;
   padding-left: 5px;
   color: #aea7a7;
+  background-color: transparent;
 
   ::placeholder {
     color: #aea7a7;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
   }
 `;
