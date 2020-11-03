@@ -3,3 +3,4 @@ export { default as FindPasswordContainer } from "./FindPassword/FindPasswordCon
 export { default as RegisterContainer } from "./Register/RegisterContainer";
 export { default as BoardListContainer } from "./Board/BoardList/BoardListContainer";
 export { default as BoardWriteContainer } from "./Board/BoardWrite/BoardWriteContainer";
+export { default as BoardDetailContainer } from "./Board/BoardDetail/BoardDetailContainer";
