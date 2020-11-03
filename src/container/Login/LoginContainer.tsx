@@ -12,7 +12,7 @@ const LoginContainer: FC = () => {
   );
 
   useEffect(() => {
-    successLogin && history.push("/board");
+    successLogin && history.push("/board/list");
   }, [successLogin]);
 
   return <Login />;
