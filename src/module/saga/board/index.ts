@@ -1,4 +1,4 @@
-import { call, put, select, takeEvery } from "redux-saga/effects";
+import { call, put, select, takeEvery, takeLatest } from "redux-saga/effects";
 import { requestApi, requestApiWithAccessToken } from "../../../lib/api";
 import { boardAction, boardActionCreater } from "../../action/board";
 import { StoreType } from "../../reducer";
@@ -16,7 +16,7 @@ function* getBoardListSaga() {
 }
 
 function* boardSaga() {
-  yield takeEvery(boardAction.GET_BOARD_LIST_SAGA, getBoardListSaga);
+  yield takeLatest(boardAction.GET_BOARD_LIST_SAGA, getBoardListSaga);
 }
 
 export default boardSaga;
