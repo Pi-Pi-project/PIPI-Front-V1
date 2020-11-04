@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -69,8 +70,9 @@ export const Introduce = styled.div`
   }
 `;
 
-export const ProjectName = styled.div`
+export const ProjectName = styled(Link)`
   font-size: 30px;
+  text-decoration: none;
   font-weight: bold;
   color: #3b3b3b;
 `;
