@@ -1,13 +1,15 @@
 import React, { FC } from "react";
 import { LoginedContainer } from "../../../style/GlobalStyle";
+import BoardDetailContent from "./BoardDetailContent/BoardDetailContent";
 import BoardDetailHeader from "./BoardDetailHeader/BoardDetailHeader";
-import { BoardDetailGlobalStyle } from "./styles";
+import * as S from "./styles";
 
 const BoardDetail: FC = () => {
   return (
     <LoginedContainer>
-      <BoardDetailGlobalStyle />
+      <S.BoardDetailGlobalStyle />
       <BoardDetailHeader />
+      <BoardDetailContent />
     </LoginedContainer>
   );
 };
