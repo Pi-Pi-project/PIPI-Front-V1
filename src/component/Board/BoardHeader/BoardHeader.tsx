@@ -18,7 +18,7 @@ const BoardHeader: FC<Props> = ({ activeIndex }) => {
           <S.HrefButton to="/board/apply" isActive={activeIndex === 1}>
             신청 목록
           </S.HrefButton>
-          <S.HrefButton to="/board/my" isActive={activeIndex === 2}>
+          <S.HrefButton to="/board/mine" isActive={activeIndex === 2}>
             마이 프로젝트
           </S.HrefButton>
           <S.HrefButton to="/board/write" isActive={activeIndex === 3}>
