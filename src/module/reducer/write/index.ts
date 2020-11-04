@@ -8,6 +8,7 @@ interface WriteReducerState {
   introduce: string;
   detail: string;
   file: File | null;
+  modalIsOpen: boolean;
 }
 
 const writeReducerState: WriteReducerState = {
@@ -17,7 +18,8 @@ const writeReducerState: WriteReducerState = {
   max: "0",
   introduce: "",
   detail: "",
-  file: null
+  file: null,
+  modalIsOpen: false
 };
 
 const writeReducer = (
@@ -36,6 +38,12 @@ const writeReducer = (
       return {
         ...state,
         file: action.payload
+      };
+    }
+    case writeAction.CHANGE_MODAL_STATE: {
+      return {
+        ...state,
+        modalIsOpen: action.payload
       };
     }
     default: {
