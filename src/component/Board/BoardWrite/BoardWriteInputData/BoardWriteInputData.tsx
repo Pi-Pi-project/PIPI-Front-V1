@@ -1,6 +1,4 @@
-import React, { ChangeEvent, FC } from "react";
-import { useState } from "react";
-import { useCallback } from "react";
+import React, { ChangeEvent, FC, useCallback, MouseEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { writeActionCreater } from "../../../../module/action/write";
 import { StoreType } from "../../../../module/reducer";
@@ -19,6 +17,10 @@ const BoardWriteInputData: FC = () => {
     dispatch(writeActionCreater.inputUpdate({ name, value }));
   }, []);
 
+  const openModal = useCallback((e: MouseEvent<HTMLInputElement>) => {
+    dispatch(writeActionCreater.changeModalState(true));
+  }, []);
+
   return (
     <S.Container>
       <S.BoardData>
@@ -28,24 +30,15 @@ const BoardWriteInputData: FC = () => {
           type="text"
           placeholder="*프로젝트 명"
         />
-        <S.BoardInput
+        <S.HiddenInput
           name="category"
           onChange={changeHandler}
           type="text"
           placeholder="*프로젝트 카테고리"
         />
-        <S.BoardInput
-          name="skills"
-          onChange={changeHandler}
-          type="text"
-          placeholder="*기술 스택"
-        />
-        <S.BoardInput
-          name="max"
-          onChange={changeHandler}
-          type="number"
-          placeholder="*최대 인원 수"
-        />
+        <S.InputButton onClick={openModal}>
+          프로젝트 카테고리 & 기술 스택
+        </S.InputButton>
       </S.BoardData>
       <S.BoardImg>
         <S.Title>*배너 이미지</S.Title>

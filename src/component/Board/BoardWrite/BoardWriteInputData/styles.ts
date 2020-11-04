@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex: 1;
+  height: 240px;
 `;
 
 export const BoardData = styled.div`
@@ -45,6 +46,25 @@ export const BannerImg = styled.div`
   img {
     height: 100%;
   }
+`;
+
+export const HiddenInput = styled.input`
+  display: none;
+`;
+
+export const InputButton = styled.button`
+  border: none;
+  border-bottom: 1px solid #3b3b3b;
+  width: 90%;
+  font-size: 25px;
+  margin-top: 25px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  color: #aea7a7;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
 `;
 
 export const BoardInput = styled.input`
