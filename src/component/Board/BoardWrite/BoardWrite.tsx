@@ -4,6 +4,7 @@ import { LoginedContainer } from "../../../style/GlobalStyle";
 import BoardWriteInputData from "./BoardWriteInputData/BoardWriteInputData";
 import BoardWriteIntroduce from "./BoardWriteIntroduce/BoardWriteIntroduce";
 import BoardWriteDeailIntroduce from "./BoardWriteDetailIntroduce/BoardWriteDetailIntroduce";
+import BoardWriteModal from "../BoardModal/BoardWriteModal";
 
 const BoardWrite: FC = () => {
   return (
@@ -13,6 +14,7 @@ const BoardWrite: FC = () => {
         <BoardWriteInputData />
         <BoardWriteIntroduce />
         <BoardWriteDeailIntroduce />
+        <BoardWriteModal />
       </LoginedContainer>
     </S.Container>
   );
