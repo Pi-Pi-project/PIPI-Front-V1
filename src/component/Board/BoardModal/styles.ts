@@ -1,20 +1,36 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { SubmitButton } from "../../Form/styles";
 
-export const Container = styled.div`
+export const Container = styled.div<{ isSecond: boolean }>`
   width: 100vw;
-  height: 100vh;
+  height: 100vh !important;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
   top: 0;
   left: 0;
+  > div {
+    transition: 1s transform;
+    height: 100vh;
+    width: 100%;
+
+    ${props =>
+      props.isSecond &&
+      css`
+        transform: translateY(-100%);
+      `}
+
+    > div {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 `;
 
 export const Modal = styled.div`
   width: 1200px;
-  height: 400px;
+  height: 450px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,15 +69,73 @@ export const Title = styled.div`
   font-size: 35px;
 `;
 
-export const LeftDiv = styled.div`
+export const MySkills = styled.div`
+  width: 100%;
+  max-width: 396px;
+  overflow-y: auto;
+  background-color: white;
+  min-height: 100px;
+  border-radius: 14px;
+  box-shadow: 0px 5px 10px 1px rgb(0, 0, 0, 0.1);
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+`;
 
-  > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+export const SkillImg = styled.div<{ src: string }>`
+  width: 43px;
+  height: 43px;
+  margin: 5px;
+  border-radius: 50%;
+  background: url(${props => props.src}) no-repeat;
+  background-size: cover;
+  background-position: center;
+`;
+
+export const Input = styled.input`
+  background: white;
+  color: rgb(59, 59, 59, 0.48);
+  border: none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 25px;
+  border-bottom: 1px solid #707070;
+  padding-left: 10px;
+  box-sizing: border-box;
+  width: 396px;
+  transform: translatey(-10px);
+  &::placeholder {
+    color: rgb(59, 59, 59, 0.48);
   }
 `;
-export const RightDiv = styled.div``;
+
+export const SearchBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const SkillWrap = styled.div`
+  position: relative;
+`;
+
+export const SearchSkill = styled.div`
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  font-size: 20px;
+  color: black;
+  border-radius: 10px;
+  height: 70px;
+  box-shadow: 0px 5px 10px 1px rgb(0, 0, 0, 0.1);
+  text-align: center;
+  overflow-y: auto;
+`;
+
+export const Button = styled(SubmitButton)`
+  width: 200px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+  margin-top: 100px;
+`;
