@@ -5,6 +5,7 @@ import password from "./password";
 import register from "./register";
 import board from "./board";
 import write from "./write";
+import navigation from "./navigation";
 
 const rootReducer = combineReducers({
   modal,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   password,
   register,
   board,
-  write
+  write,
+  navigation
 });
 
 export type StoreType = ReturnType<typeof rootReducer>;
