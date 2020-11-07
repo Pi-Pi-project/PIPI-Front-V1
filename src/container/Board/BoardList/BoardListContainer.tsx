@@ -7,6 +7,7 @@ import { boardActionCreater } from "../../../module/action/board";
 const BoardListContainer: FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(boardActionCreater.resetBoard());
     dispatch(boardActionCreater.getBoardListSaga());
   }, []);
   return <BoardList />;
