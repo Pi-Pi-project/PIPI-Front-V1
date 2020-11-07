@@ -19,6 +19,7 @@ const BoardWriteInputData: FC = () => {
 
   const openModal = useCallback((e: MouseEvent<HTMLInputElement>) => {
     dispatch(writeActionCreater.changeModalState(true));
+    dispatch(writeActionCreater.setModalType("CATEGORY"));
   }, []);
 
   return (
@@ -29,6 +30,12 @@ const BoardWriteInputData: FC = () => {
           onChange={changeHandler}
           type="text"
           placeholder="*프로젝트 명"
+        />
+        <S.BoardInput
+          name="max"
+          onChange={changeHandler}
+          type="number"
+          placeholder="*최대 인원 수"
         />
         <S.HiddenInput
           name="category"
