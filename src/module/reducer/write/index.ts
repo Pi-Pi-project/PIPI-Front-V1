@@ -9,6 +9,9 @@ interface WriteReducerState {
   detail: string;
   file: File | null;
   modalIsOpen: boolean;
+  skill: string;
+  type: string;
+  success: boolean;
 }
 
 const writeReducerState: WriteReducerState = {
@@ -19,7 +22,10 @@ const writeReducerState: WriteReducerState = {
   introduce: "",
   detail: "",
   file: null,
-  modalIsOpen: false
+  modalIsOpen: false,
+  skill: "",
+  type: "CATEGORY",
+  success: false
 };
 
 const writeReducer = (
@@ -40,10 +46,32 @@ const writeReducer = (
         file: action.payload
       };
     }
+    case writeAction.SET_SKILLS: {
+      if (state.skills.includes(action.payload)) {
+        return state;
+      }
+      return {
+        ...state,
+        skills: state.skills.concat(action.payload)
+      };
+    }
     case writeAction.CHANGE_MODAL_STATE: {
       return {
         ...state,
         modalIsOpen: action.payload
+      };
+    }
+
+    case writeAction.SET_MODAL_TYPE: {
+      return {
+        ...state,
+        type: action.payload
+      };
+    }
+    case writeAction.SUCCESS_POST: {
+      return {
+        ...state,
+        success: true
       };
     }
     default: {
