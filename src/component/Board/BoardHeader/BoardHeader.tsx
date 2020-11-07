@@ -1,6 +1,10 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
 import { magnifyingIconSvg } from "../../../asset";
+import { boardActionCreater } from "../../../module/action/board";
 import { LoginedContainer } from "../../../style/GlobalStyle";
+import BoardSearchModal from "../BoardModal/BoardSearchModal";
 import * as S from "./styles";
 
 interface Props {
@@ -8,6 +12,10 @@ interface Props {
 }
 
 const BoardHeader: FC<Props> = ({ activeIndex }) => {
+  const dispatch = useDispatch();
+  const openSearchModal = useCallback(() => {
+    dispatch(boardActionCreater.changeSearchModal(true));
+  }, []);
   return (
     <S.Container>
       <LoginedContainer>
@@ -26,10 +34,11 @@ const BoardHeader: FC<Props> = ({ activeIndex }) => {
           </S.HrefButton>
         </div>
         <S.InputWrap>
-          <input />
+          <input type="text" onClick={openSearchModal} />
           <img src={magnifyingIconSvg} />
         </S.InputWrap>
       </LoginedContainer>
+      <BoardSearchModal />
     </S.Container>
   );
 };
