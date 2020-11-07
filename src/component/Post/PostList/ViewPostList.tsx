@@ -2,6 +2,7 @@ import React, { FC, UIEvent } from "react";
 import { useCallback } from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import { boardActionCreater } from "../../../module/action/board";
 import { PostItem } from "../../../module/reducer/board";
 import { LoginedContainer } from "../../../style/GlobalStyle";
