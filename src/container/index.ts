@@ -5,3 +5,6 @@ export { default as BoardListContainer } from "./Board/BoardList/BoardListContai
 export { default as BoardWriteContainer } from "./Board/BoardWrite/BoardWriteContainer";
 export { default as BoardDetailContainer } from "./Board/BoardDetail/BoardDetailContainer";
 export { default as BoardMineContainer } from "./Board/BoardMine/BoardMineContainer";
+export { default as BoardApplyContainer } from "./Board/BoardApply/BoardApplyContainer";
+export { default as BoardSearchContainer } from "./Board/BoardSearch/BoardSearchContainer";
+export { default as BoardMemberContainer } from "./Board/BoardMember/BoardMemberContainer";

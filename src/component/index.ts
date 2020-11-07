@@ -4,3 +4,6 @@ export { default as BoardList } from "./Board/BoardList/BoardList";
 export { default as BoardWrtie } from "./Board/BoardWrite/BoardWrite";
 export { default as BoardDetail } from "./Board/BoardDetail/BoardDetail";
 export { default as BoardMine } from "./Board/BoardMine/BoardMine";
+export { default as BoardApply } from "./Board/BoardApply/BoardApply";
+export { default as BoardSearch } from "./Board/BoardSearch/BoardSearch";
+export { default as BoardMember } from "./Board/BoardMember/BoardMember";
