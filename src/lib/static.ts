@@ -52,3 +52,16 @@ export const skillNameToSrc: {
   (state, { showName, src }) => ({ ...state, [showName]: src }),
   {}
 );
+
+export const CategoryArr = [
+  "Web",
+  "App",
+  "Data Science",
+  "System",
+  "Network",
+  "Machine Learning",
+  "Security",
+  "Embedded",
+  "VR",
+  "Game"
+];
