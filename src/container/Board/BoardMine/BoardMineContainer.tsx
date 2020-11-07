@@ -7,6 +7,7 @@ import { boardActionCreater } from "../../../module/action/board";
 const BoardMineContainer: FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(boardActionCreater.resetBoard());
     dispatch(boardActionCreater.getBoardDoingSaga());
     dispatch(boardActionCreater.getBoardWantedSaga());
   }, []);
