@@ -14,6 +14,10 @@ const BoardWriteDeailIntroduce: FC = () => {
     const { name, value } = e.target;
     dispatch(writeActionCreater.inputUpdate({ name, value }));
   }, []);
+
+  const subMit = useCallback(() => {
+    dispatch(writeActionCreater.uploadPostSaga());
+  }, []);
   return (
     <S.Container>
       <S.IntroduceInput
@@ -22,7 +26,7 @@ const BoardWriteDeailIntroduce: FC = () => {
         placeholder="*상세 소개&#13;&#10;Ex) 우대사항, 프로젝트 특이사항"
         value={detail}
       ></S.IntroduceInput>
-      <S.WriteButton>공고 올리기</S.WriteButton>
+      <S.WriteButton onClick={subMit}>공고 올리기</S.WriteButton>
     </S.Container>
   );
 };
