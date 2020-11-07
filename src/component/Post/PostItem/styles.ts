@@ -34,6 +34,23 @@ export const UserImg = styled.div<{ src: string }>`
   border-radius: 14px;
 `;
 
+export const ButtonWrap = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const BottmWrap = styled.div`
+  display: flex;
+  flex: 1;
+`;
+
+export const Button = styled.button`
+  background-color: #53af9e;
+  color: white;
+  font-weight: bolder;
+  font-size: 25px;
+  padding: 3px 20px;
+`;
+
 export const SkillImg = styled.div<{ src: string }>`
   background: url(${props => props.src}) no-repeat;
   background-position: center;
