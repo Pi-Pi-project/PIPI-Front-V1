@@ -25,7 +25,9 @@ export interface DetailPostItem {
   idea: string;
   postSkillsets: SkillSet[];
   max: number;
+  mine: boolean;
   userEmail: string;
+  applied: boolean;
   userImg: string;
   userNickname: string;
   createdAt: string;
@@ -36,6 +38,18 @@ interface BoardItem {
   list: PostItem[];
   page: number;
   isLoading: boolean;
+  modalIsOpen?: boolean;
+}
+
+export interface ApplyUser {
+  userEmail: string;
+  userImg: string;
+  userNickname: string;
+}
+
+export interface ApplyPost {
+  applyUsers: ApplyUser[];
+  id: number;
 }
 
 interface BoardReducerState {
@@ -43,12 +57,15 @@ interface BoardReducerState {
   boardApply: BoardItem;
   boardDoing: BoardItem;
   boardWanted: BoardItem;
+  boardSearch: BoardItem;
+  postApply: ApplyPost;
   detail: DetailPostItem;
 }
 
 const initialBoardItem: BoardItem = {
   list: [],
   page: 0,
+  modalIsOpen: false,
   isLoading: false
 };
 const boardInitialState: BoardReducerState = {
@@ -56,7 +73,14 @@ const boardInitialState: BoardReducerState = {
   boardList: { ...initialBoardItem },
   boardDoing: { ...initialBoardItem },
   boardWanted: { ...initialBoardItem },
+  boardSearch: { ...initialBoardItem },
+  postApply: {
+    applyUsers: [],
+    id: 0
+  },
   detail: {
+    applied: false,
+    mine: false,
     content: "",
     category: "",
     createdAt: "",
@@ -97,16 +121,54 @@ const boardReducer = (
         }
       };
     }
+    case boardAction.GET_BOARD_APPLY: {
+      return {
+        ...state,
+        boardApply: {
+          isLoading: true,
+          list: state.boardApply.list.concat(action.payload),
+          page: state.boardApply.page + 1
+        }
+      };
+    }
+    case boardAction.GET_BOARD_SEARCH: {
+      return {
+        ...state,
+        boardSearch: {
+          ...state.boardSearch,
+          isLoading: true,
+          list: state.boardSearch.list.concat(action.payload),
+          page: state.boardSearch.page + 1
+        }
+      };
+    }
     case boardAction.GET_BOARD_DETAIL: {
       return {
         ...state,
         detail: action.payload
       };
     }
+    case boardAction.GET_POST_APPLY_USER_LIST: {
+      return {
+        ...state,
+        postApply: action.payload
+      };
+    }
+    case boardAction.CHANGE_SEARCH_MODAL: {
+      return {
+        ...state,
+        boardSearch: {
+          ...state.boardSearch,
+          modalIsOpen: action.payload
+        }
+      };
+    }
+    case boardAction.RESET_BOARD: {
+      return boardInitialState;
+    }
     default: {
       return state;
     }
   }
 };
-
 export default boardReducer;
