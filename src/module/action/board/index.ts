@@ -1,4 +1,15 @@
-import { PostItem, DetailPostItem } from "../../reducer/board";
+import { cancel } from "redux-saga/effects";
+import {
+  PostItem,
+  DetailPostItem,
+  ApplyUser,
+  ApplyPost
+} from "../../reducer/board";
+
+interface ApplyUserObj {
+  userEmail: string;
+  userNickname: string;
+}
 
 const GET_BOARD_LIST_SAGA = "board/GET_BOARD_LIST_SAGA" as const;
 const GET_BOARD_LIST = "board/GET_BOARD_LIST" as const;
@@ -12,8 +23,69 @@ const GET_BOARD_DOING = "board/GET_BOARD_DOING" as const;
 const GET_BOARD_WANTED_SAGA = "board/GET_BOARD_WANTED_SAGA" as const;
 const GET_BOARD_WANTED = "board/GET_BOARD_WANTED" as const;
 
+const GET_BOARD_SEARCH_SAGA = "board/GET_BOARD_SEARCH_SAGA" as const;
+const GET_BOARD_SEARCH = "board/GET_BOARD_SEARCH" as const;
+
 const GET_BOARD_DETAIL_SAGA = "board/GET_BOARD_DETAIL_SAGA" as const;
 const GET_BOARD_DETAIL = "board/GET_BOARD_DETAIL" as const;
+
+const RESET_BOARD = "board/RESET_BOARD" as const;
+const APPLY_PROJECT_SAGA = "board/APPLY_PROJECT_SAGA" as const;
+
+const CANCEL_APPLY_SAGA = "board/CANCEL_APPLY_SAGA" as const;
+
+const CHANGE_SEARCH_MODAL = "board/CHANGE_SEARCH_MODAL" as const;
+
+const GET_POST_APPLY_USER_LIST_SAGA = "board/GET_POST_APPLY_USER_LIST_SAGA" as const;
+const GET_POST_APPLY_USER_LIST = "board/GET_POST_APPLY_USER_LIST" as const;
+
+const ACCEPT_APPLY_SAGA = "board/ACCEPT_APPLY_SAGA" as const;
+const REJECT_APPLY_SAGA = "board/REJECT_APPLY_SAGA" as const;
+
+const acceptApplySaga = (payload: ApplyUserObj) => ({
+  type: ACCEPT_APPLY_SAGA,
+  payload
+});
+const rejectApplySaga = (payload: ApplyUserObj) => ({
+  type: REJECT_APPLY_SAGA,
+  payload
+});
+const getPostApplyUserListSaga = (payload: number) => ({
+  type: GET_POST_APPLY_USER_LIST_SAGA,
+  payload
+});
+
+const getPostApplyUserList = (payload: ApplyPost) => ({
+  type: GET_POST_APPLY_USER_LIST,
+  payload
+});
+
+const changeSearchModal = (payload: boolean) => ({
+  type: CHANGE_SEARCH_MODAL,
+  payload
+});
+
+const getBoardSearchSaga = (payload: string) => ({
+  type: GET_BOARD_SEARCH_SAGA,
+  payload
+});
+const getBoardSearch = (payload: PostItem[]) => ({
+  type: GET_BOARD_SEARCH,
+  payload
+});
+
+const cancelApplySaga = (payload: number) => ({
+  type: CANCEL_APPLY_SAGA,
+  payload
+});
+
+const applyProjectSaga = () => ({
+  type: APPLY_PROJECT_SAGA
+});
+
+const resetBoard = () => ({
+  type: RESET_BOARD
+});
 
 const getBoardDetailSaga = (payload: number) => ({
   type: GET_BOARD_DETAIL_SAGA,
@@ -69,7 +141,17 @@ type BoardAction =
   | ReturnType<typeof getBoardDetailSaga>
   | ReturnType<typeof getBoardDetail>
   | ReturnType<typeof getBoardWantedSaga>
-  | ReturnType<typeof getBoardWanted>;
+  | ReturnType<typeof getBoardWanted>
+  | ReturnType<typeof resetBoard>
+  | ReturnType<typeof applyProjectSaga>
+  | ReturnType<typeof cancelApplySaga>
+  | ReturnType<typeof getBoardSearchSaga>
+  | ReturnType<typeof getBoardSearch>
+  | ReturnType<typeof changeSearchModal>
+  | ReturnType<typeof getPostApplyUserList>
+  | ReturnType<typeof getPostApplyUserListSaga>
+  | ReturnType<typeof rejectApplySaga>
+  | ReturnType<typeof acceptApplySaga>;
 
 export const boardAction = {
   GET_BOARD_LIST_SAGA,
@@ -81,7 +163,17 @@ export const boardAction = {
   GET_BOARD_DETAIL_SAGA,
   GET_BOARD_DETAIL,
   GET_BOARD_WANTED_SAGA,
-  GET_BOARD_WANTED
+  GET_BOARD_WANTED,
+  RESET_BOARD,
+  APPLY_PROJECT_SAGA,
+  CANCEL_APPLY_SAGA,
+  GET_BOARD_SEARCH_SAGA,
+  CHANGE_SEARCH_MODAL,
+  GET_BOARD_SEARCH,
+  GET_POST_APPLY_USER_LIST,
+  GET_POST_APPLY_USER_LIST_SAGA,
+  ACCEPT_APPLY_SAGA,
+  REJECT_APPLY_SAGA
 };
 
 export const boardActionCreater = {
@@ -94,7 +186,17 @@ export const boardActionCreater = {
   getBoardDetailSaga,
   getBoardDetail,
   getBoardWantedSaga,
-  getBoardWanted
+  getBoardWanted,
+  resetBoard,
+  applyProjectSaga,
+  cancelApplySaga,
+  getBoardSearchSaga,
+  changeSearchModal,
+  getBoardSearch,
+  getPostApplyUserListSaga,
+  getPostApplyUserList,
+  acceptApplySaga,
+  rejectApplySaga
 };
 
 export default BoardAction;
