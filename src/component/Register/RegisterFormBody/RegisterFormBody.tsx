@@ -24,10 +24,6 @@ const RegisterFormBody: FC = () => {
   } = useSelector((store: StoreType) => store.register);
   const inputRef = useRef<HTMLInputElement>();
 
-  useEffect(() => {
-    dispatch({ type: "register/SET_STEP", payload: "SET_USER_PROFILE" });
-  }, []);
-
   const addSkills = useCallback((skill: SkillData) => {
     dispatch(registerActionCreater.setSkills(skill));
   }, []);
