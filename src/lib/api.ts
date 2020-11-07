@@ -3,6 +3,8 @@ import Axios, { AxiosResponse } from "axios";
 export const BASE_URL = "http://10.156.145.141:8080";
 export const JWT_TOKEN = "JWT";
 export const REFRESH_TOKEN = "REFRESH";
+export const BASE_IMG_URL =
+  "https://pipi-project.s3.ap-northeast-2.amazonaws.com";
 
 type MethodType = "get" | "post" | "patch" | "put" | "delete";
 type ReturnType = Promise<AxiosResponse<any>>;
