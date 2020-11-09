@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   width: 80%;
@@ -40,13 +40,20 @@ export const ButtonBoxWrap = styled.div`
   display: flex;
   align-items: center;
 `;
-export const Button = styled.button`
+export const Button = styled.button<{ isActive?: boolean }>`
   border: 1px solid #53af9e;
   background: transparent;
   border-radius: 5px;
   padding: 5px 20px;
   font-size: 20px;
   font-weight: bold;
+  transition: 1s all;
+
+  ${props =>
+    props.isActive &&
+    css`
+      background: #53af9e;
+    `}
 
   & + & {
     margin-left: 10px;
