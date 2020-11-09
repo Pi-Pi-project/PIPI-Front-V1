@@ -6,7 +6,15 @@ import { boardActionCreater } from "../../../module/action/board";
 import { ApplyUser } from "../../../module/reducer/board";
 import * as S from "./styles";
 
-const ApplyUserItem: FC<ApplyUser> = ({ userNickname, userImg, userEmail }) => {
+const ACCEPTED = "ACCEPTED";
+const DENIED = "DENIED";
+
+const ApplyUserItem: FC<ApplyUser> = ({
+  userNickname,
+  userImg,
+  userEmail,
+  status
+}) => {
   const dispatch = useDispatch();
   const rejectApply = useCallback(() => {
     dispatch(
@@ -36,8 +44,12 @@ const ApplyUserItem: FC<ApplyUser> = ({ userNickname, userImg, userEmail }) => {
       </S.UserProfileWrap>
       <S.ButtonBoxWrap>
         <S.Button>채팅</S.Button>
-        <S.Button onClick={acceptApply}>수락</S.Button>
-        <S.Button onClick={rejectApply}>거절</S.Button>
+        <S.Button isActive={status === ACCEPTED} onClick={acceptApply}>
+          수락
+        </S.Button>
+        <S.Button isActive={status === DENIED} onClick={rejectApply}>
+          거절
+        </S.Button>
       </S.ButtonBoxWrap>
     </S.Container>
   );
