@@ -152,6 +152,13 @@ function* acceptApplySaga(
         subTitle: `${userNickname}님을 수락하였습니다`
       })
     );
+
+    yield put(
+      boardActionCreater.editBoardMember({
+        email: userEmail,
+        accept: "ACCEPTED"
+      })
+    );
   } catch (err) {}
 }
 function* rejectApplySaga(
@@ -172,6 +179,13 @@ function* rejectApplySaga(
       modalActionCreater.formModalOn({
         title: "성공하였습니다",
         subTitle: `${userNickname}님을 거절하였습니다`
+      })
+    );
+
+    yield put(
+      boardActionCreater.editBoardMember({
+        email: userEmail,
+        accept: "DENIED"
       })
     );
   } catch (err) {}
