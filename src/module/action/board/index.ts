@@ -42,6 +42,13 @@ const GET_POST_APPLY_USER_LIST = "board/GET_POST_APPLY_USER_LIST" as const;
 const ACCEPT_APPLY_SAGA = "board/ACCEPT_APPLY_SAGA" as const;
 const REJECT_APPLY_SAGA = "board/REJECT_APPLY_SAGA" as const;
 
+const EDIT_BOARD_MEMBER = "board/EDIT_BOARD_MEMBER" as const;
+
+const editBoardMember = (payload: { email: string; accept: string }) => ({
+  type: EDIT_BOARD_MEMBER,
+  payload
+});
+
 const acceptApplySaga = (payload: ApplyUserObj) => ({
   type: ACCEPT_APPLY_SAGA,
   payload
@@ -151,7 +158,8 @@ type BoardAction =
   | ReturnType<typeof getPostApplyUserList>
   | ReturnType<typeof getPostApplyUserListSaga>
   | ReturnType<typeof rejectApplySaga>
-  | ReturnType<typeof acceptApplySaga>;
+  | ReturnType<typeof acceptApplySaga>
+  | ReturnType<typeof editBoardMember>;
 
 export const boardAction = {
   GET_BOARD_LIST_SAGA,
@@ -173,7 +181,8 @@ export const boardAction = {
   GET_POST_APPLY_USER_LIST,
   GET_POST_APPLY_USER_LIST_SAGA,
   ACCEPT_APPLY_SAGA,
-  REJECT_APPLY_SAGA
+  REJECT_APPLY_SAGA,
+  EDIT_BOARD_MEMBER
 };
 
 export const boardActionCreater = {
@@ -196,7 +205,8 @@ export const boardActionCreater = {
   getPostApplyUserListSaga,
   getPostApplyUserList,
   acceptApplySaga,
-  rejectApplySaga
+  rejectApplySaga,
+  editBoardMember
 };
 
 export default BoardAction;
