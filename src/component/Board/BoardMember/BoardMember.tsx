@@ -13,8 +13,9 @@ const BoardMember: FC = () => {
     <S.Container>
       <S.BoardMemberGlobalStyle />
       <LoginedContainer>
-        {list.map(({ userEmail, userImg, userNickname }) => (
+        {list.map(({ userEmail, status, userImg, userNickname }) => (
           <ApplyUserItem
+            status={status}
             userEmail={userEmail}
             userImg={userImg}
             userNickname={userNickname}
