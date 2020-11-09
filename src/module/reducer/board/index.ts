@@ -43,6 +43,7 @@ interface BoardItem {
 
 export interface ApplyUser {
   userEmail: string;
+  status: string;
   userImg: string;
   userNickname: string;
 }
@@ -160,6 +161,18 @@ const boardReducer = (
         boardSearch: {
           ...state.boardSearch,
           modalIsOpen: action.payload
+        }
+      };
+    }
+    case boardAction.EDIT_BOARD_MEMBER: {
+      const { email, accept } = action.payload;
+      return {
+        ...state,
+        postApply: {
+          ...state.postApply,
+          applyUsers: state.postApply.applyUsers.map(now =>
+            now.userEmail === email ? { ...now, status: accept } : now
+          )
         }
       };
     }
