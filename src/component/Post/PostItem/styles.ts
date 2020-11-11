@@ -48,7 +48,15 @@ export const Button = styled.button`
   color: white;
   font-weight: bolder;
   font-size: 25px;
+  border: 1px solid transparent;
+  transition: 0.25s all;
   padding: 3px 20px;
+
+  &:hover {
+    color: #53af9e;
+    background: white;
+    border: 1px solid #53af9e;
+  }
 `;
 
 export const SkillImg = styled.div<{ src: string }>`
