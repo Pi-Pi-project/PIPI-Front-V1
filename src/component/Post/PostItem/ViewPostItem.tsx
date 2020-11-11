@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 import { PostItem } from "../../../module/reducer/board";
-import { BASE_IMG_URL } from "../../../lib/api";
 import * as S from "./styles";
-import { skillNameToSrc } from "../../../lib/static";
+import { getImgSrc, getSkillImgSrc } from "../../../lib/func";
+import { useHistory } from "react-router";
+import { useCallback } from "react";
 
 const ViewPostItem: FC<PostItem> = ({
   title,
@@ -11,15 +12,20 @@ const ViewPostItem: FC<PostItem> = ({
   img,
   userImg,
   userNickname,
-  postSkillsets
+  postSkillsets,
+  userEmail
 }) => {
+  const history = useHistory();
+  const gotoProfile = useCallback(() => {
+    history.push(`/board/profile?email=${userEmail}`);
+  }, [userEmail]);
   return (
     <S.Container>
-      <S.PreviewImg src={`${BASE_IMG_URL}/${img}`} />
+      <S.PreviewImg src={getImgSrc(img)} />
       <S.ProjectIntroduce>
         <S.ProjectName to={`/board/detail/${id}`}>{title}</S.ProjectName>
-        <S.ProjectManager>
-          <S.UserImg src={`${BASE_IMG_URL}/${userImg}`} />
+        <S.ProjectManager onClick={gotoProfile}>
+          <S.UserImg src={getImgSrc(userImg)} />
           <S.UserName>{userNickname}</S.UserName>
         </S.ProjectManager>
         <S.Introduce>
@@ -28,7 +34,7 @@ const ViewPostItem: FC<PostItem> = ({
         </S.Introduce>
         <S.SkillSets>
           {postSkillsets.map(({ skill }) => (
-            <S.SkillImg src={skillNameToSrc[skill]} />
+            <S.SkillImg src={getSkillImgSrc(skill)} />
           ))}
         </S.SkillSets>
       </S.ProjectIntroduce>

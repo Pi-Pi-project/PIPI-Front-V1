@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { BASE_IMG_URL } from "../../../lib/api";
+import { useHistory } from "react-router";
+import { getImgSrc } from "../../../lib/func";
 import { boardActionCreater } from "../../../module/action/board";
 import { ApplyUser } from "../../../module/reducer/board";
 import * as S from "./styles";
@@ -15,7 +16,12 @@ const ApplyUserItem: FC<ApplyUser> = ({
   userEmail,
   status
 }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
+
+  const gotoProfile = useCallback(() => {
+    history.push(`/board/profile?email=${userEmail}`);
+  }, []);
   const rejectApply = useCallback(() => {
     dispatch(
       boardActionCreater.rejectApplySaga({
@@ -36,7 +42,7 @@ const ApplyUserItem: FC<ApplyUser> = ({
   return (
     <S.Container>
       <S.UserProfileWrap>
-        <S.UsetImgCircle src={`${BASE_IMG_URL}/${userImg}`} />
+        <S.UsetImgCircle onClick={gotoProfile} src={getImgSrc(userImg)} />
         <S.UserTextWrap>
           <S.UserName>{userNickname}</S.UserName>
           <S.UserEmail>{userEmail}</S.UserEmail>
