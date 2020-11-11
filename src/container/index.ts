@@ -8,3 +8,4 @@ export { default as BoardMineContainer } from "./Board/BoardMine/BoardMineContai
 export { default as BoardApplyContainer } from "./Board/BoardApply/BoardApplyContainer";
 export { default as BoardSearchContainer } from "./Board/BoardSearch/BoardSearchContainer";
 export { default as BoardMemberContainer } from "./Board/BoardMember/BoardMemberContainer";
+export { default as BoardProfileContainer } from "./Board/BoardProfile/BoardProfileContainer";
