@@ -3,6 +3,7 @@ import boardSaga from "./board";
 import loginSaga from "./login";
 import navigationSaga from "./navigation";
 import passwordSaga from "./password";
+import profileSaga from "./profile";
 import registerSaga from "./register";
 import writeSaga from "./write";
 
@@ -13,7 +14,8 @@ function* rootSaga() {
     registerSaga(),
     boardSaga(),
     writeSaga(),
-    navigationSaga()
+    navigationSaga(),
+    profileSaga()
   ]);
 }
 
