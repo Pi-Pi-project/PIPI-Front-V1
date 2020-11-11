@@ -6,6 +6,7 @@ import register from "./register";
 import board from "./board";
 import write from "./write";
 import navigation from "./navigation";
+import profile from "./profile";
 
 const rootReducer = combineReducers({
   modal,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   register,
   board,
   write,
-  navigation
+  navigation,
+  profile
 });
 
 export type StoreType = ReturnType<typeof rootReducer>;
