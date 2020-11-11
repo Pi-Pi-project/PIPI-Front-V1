@@ -7,3 +7,4 @@ export { default as BoardMine } from "./Board/BoardMine/BoardMine";
 export { default as BoardApply } from "./Board/BoardApply/BoardApply";
 export { default as BoardSearch } from "./Board/BoardSearch/BoardSearch";
 export { default as BoardMember } from "./Board/BoardMember/BoardMember";
+export { default as BoardProfile } from "./Board/BoardProfile/BoardProfile";
