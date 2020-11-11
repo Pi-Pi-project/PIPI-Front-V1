@@ -1,10 +1,7 @@
 import React, { FC, ChangeEvent, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  CategoryArr,
-  skillDataArray,
-  skillNameToSrc
-} from "../../../lib/static";
+import { getSkillImgSrc } from "../../../lib/func";
+import { CategoryArr, skillDataArray } from "../../../lib/static";
 import { writeActionCreater } from "../../../module/action/write";
 import { StoreType } from "../../../module/reducer";
 import CategoryItem from "./CategoryItem/CategoryItem";
@@ -53,7 +50,7 @@ const BoardWriteModal: FC = () => {
           <S.SearchBox>
             <S.MySkills>
               {skills.map(src => (
-                <S.SkillImg src={skillNameToSrc[src]} />
+                <S.SkillImg src={getSkillImgSrc(src)} />
               ))}
             </S.MySkills>
             <S.SkillWrap>

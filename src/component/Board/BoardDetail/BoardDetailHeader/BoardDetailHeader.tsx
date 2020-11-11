@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useSelector } from "react-redux";
-import { BASE_IMG_URL } from "../../../../lib/api";
+import { getImgSrc } from "../../../../lib/func";
 import { StoreType } from "../../../../module/reducer";
 import * as S from "../styles";
 
@@ -12,7 +12,7 @@ const BoardDetailHeader: FC = () => {
     <S.BoardDetailHeader>
       <S.ProjectName>{title}</S.ProjectName>
       <S.ProfileWrap>
-        <S.ProfileImg src={`${BASE_IMG_URL}/${userImg}`} />
+        <S.ProfileImg src={getImgSrc(userImg)} />
         <S.ProfileName>{userNickname}</S.ProfileName>
       </S.ProfileWrap>
     </S.BoardDetailHeader>

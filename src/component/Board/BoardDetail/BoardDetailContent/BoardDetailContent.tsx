@@ -1,8 +1,7 @@
 import React, { FC } from "react";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BASE_IMG_URL, BASE_URL } from "../../../../lib/api";
-import { skillNameToSrc } from "../../../../lib/static";
+import { getImgSrc, getSkillImgSrc } from "../../../../lib/func";
 import { boardActionCreater } from "../../../../module/action/board";
 import { modalActionCreater } from "../../../../module/action/modal";
 import { StoreType } from "../../../../module/reducer";
@@ -39,14 +38,14 @@ const BoardDetailContent: FC = () => {
 
   return (
     <div>
-      <S.BannerImg src={`${BASE_IMG_URL}/${img}`} />
+      <S.BannerImg src={getImgSrc(img)} />
       <S.BoardDetailContent>
         <S.Content>{content}</S.Content>
         <S.Detail>
           <div>
             <S.SkillWrap>
               {postSkillsets.map(({ skill }) => (
-                <img src={skillNameToSrc[skill]} />
+                <img src={getSkillImgSrc(skill)} />
               ))}
             </S.SkillWrap>
             <S.Max>최대 인원 수 : {max}명</S.Max>
