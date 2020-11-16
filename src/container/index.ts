@@ -1,5 +1,4 @@
 export { default as LoginContainer } from "./Login/LoginContainer";
-export { default as FindPasswordContainer } from "./FindPassword/FindPasswordContainer";
 export { default as RegisterContainer } from "./Register/RegisterContainer";
 export { default as BoardListContainer } from "./Board/BoardList/BoardListContainer";
 export { default as BoardWriteContainer } from "./Board/BoardWrite/BoardWriteContainer";
@@ -8,4 +7,5 @@ export { default as BoardMineContainer } from "./Board/BoardMine/BoardMineContai
 export { default as BoardApplyContainer } from "./Board/BoardApply/BoardApplyContainer";
 export { default as BoardSearchContainer } from "./Board/BoardSearch/BoardSearchContainer";
 export { default as BoardMemberContainer } from "./Board/BoardMember/BoardMemberContainer";
-export { default as BoardProfileContainer } from "./Board/BoardProfile/BoardProfileContainer";
+export { default as ProfileContainer } from "./Profile/ProfileContainer";
+export { default as ManagementContainer } from "./Management/ManagementContainer";

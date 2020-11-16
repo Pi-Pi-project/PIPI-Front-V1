@@ -1,5 +1,4 @@
 export { default as Login } from "./Login/Login";
-export { default as FindPassword } from "./FindPassword/FindPassword";
 export { default as BoardList } from "./Board/BoardList/BoardList";
 export { default as BoardWrtie } from "./Board/BoardWrite/BoardWrite";
 export { default as BoardDetail } from "./Board/BoardDetail/BoardDetail";
@@ -8,3 +7,6 @@ export { default as BoardApply } from "./Board/BoardApply/BoardApply";
 export { default as BoardSearch } from "./Board/BoardSearch/BoardSearch";
 export { default as BoardMember } from "./Board/BoardMember/BoardMember";
 export { default as BoardProfile } from "./Board/BoardProfile/BoardProfile";
+export { default as Management } from "./Management/Management";
+export { default as Calander } from "./Calander/Calander";
+export { default as ToDoList } from "./ToDoList/ToDoList";
