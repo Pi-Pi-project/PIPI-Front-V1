@@ -6,6 +6,7 @@ import passwordSaga from "./password";
 import profileSaga from "./profile";
 import registerSaga from "./register";
 import writeSaga from "./write";
+import managementSaga from "./management";
 
 function* rootSaga() {
   yield all([
@@ -15,7 +16,8 @@ function* rootSaga() {
     boardSaga(),
     writeSaga(),
     navigationSaga(),
-    profileSaga()
+    profileSaga(),
+    managementSaga()
   ]);
 }
 
