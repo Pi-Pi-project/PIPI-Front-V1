@@ -17,7 +17,7 @@ const MinePostItem: FC<PostItem> = ({
 }) => {
   const history = useHistory();
   const gotoProfile = useCallback(() => {
-    history.push(`/board/profile?email=${userEmail}`);
+    history.push(`/profile?email=${userEmail}`);
   }, [userEmail]);
   const clickHandler = useCallback(() => {
     history.push(`/board/member/${id}`);

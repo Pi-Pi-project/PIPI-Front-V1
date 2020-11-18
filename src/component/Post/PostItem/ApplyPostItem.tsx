@@ -19,7 +19,7 @@ const ApplyPostItem: FC<PostItem> = ({
 }) => {
   const history = useHistory();
   const gotoProfile = useCallback(() => {
-    history.push(`/board/profile?email=${userEmail}`);
+    history.push(`/profile?email=${userEmail}`);
   }, [userEmail]);
   const dispatch = useDispatch();
   const cancelApply = useCallback(() => {

@@ -17,7 +17,7 @@ const ViewPostItem: FC<PostItem> = ({
 }) => {
   const history = useHistory();
   const gotoProfile = useCallback(() => {
-    history.push(`/board/profile?email=${userEmail}`);
+    history.push(`/profile?email=${userEmail}`);
   }, [userEmail]);
   return (
     <S.Container>

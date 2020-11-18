@@ -20,7 +20,7 @@ const Navigation: FC = () => {
   }, []);
 
   const gotoProfile = useCallback(() => {
-    history.push(`/board/profile?email=${email}`);
+    history.push(`/profile?email=${email}`);
   }, [email]);
 
   const gotoMain = useCallback(() => {
