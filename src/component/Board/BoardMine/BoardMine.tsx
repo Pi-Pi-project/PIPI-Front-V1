@@ -8,7 +8,7 @@ const BoardMine: FC = () => {
   const list = useSelector((store: StoreType) => store.board.boardDoing.list);
   return (
     <div>
-      <BoardHeader activeIndex={2} />
+      <BoardHeader activeIndex={1} />
       <MinePostList data={list} />
     </div>
   );
