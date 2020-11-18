@@ -20,7 +20,7 @@ const ApplyUserItem: FC<ApplyUser> = ({
   const dispatch = useDispatch();
 
   const gotoProfile = useCallback(() => {
-    history.push(`/board/profile?email=${userEmail}`);
+    history.push(`/profile?email=${userEmail}`);
   }, []);
   const rejectApply = useCallback(() => {
     dispatch(
