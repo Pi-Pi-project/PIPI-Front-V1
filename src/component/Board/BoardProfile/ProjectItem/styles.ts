@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ active: boolean }>`
   width: 100%;
   height: 120px;
   border-radius: 10px;
@@ -9,6 +9,17 @@ export const Container = styled.div`
   & + & {
     margin-top: 30px;
   }
+
+  ${props =>
+    props.active &&
+    css`
+      background-color: #61bfad;
+      color: white;
+
+      div {
+        font-weight: bold;
+      }
+    `}
 
   box-sizing: border-box;
   padding: 10px;
