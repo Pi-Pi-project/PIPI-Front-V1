@@ -41,6 +41,7 @@ export const ButtonWrap = styled.div`
 export const BottmWrap = styled.div`
   display: flex;
   flex: 1;
+  align-items: center;
 `;
 
 export const Button = styled.button`
@@ -51,6 +52,10 @@ export const Button = styled.button`
   border: 1px solid transparent;
   transition: 0.25s all;
   padding: 3px 20px;
+
+  & + & {
+    margin-left: 20px;
+  }
 
   &:hover {
     color: #53af9e;
