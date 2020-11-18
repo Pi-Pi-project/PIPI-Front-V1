@@ -20,6 +20,10 @@ const RegisterFormFooter: FC = () => {
     dispatch(registerActionCreater.requestRegisterSaga());
   }, []);
 
+  const requestProfile = useCallback(() => {
+    dispatch(registerActionCreater.requestProfileSaga());
+  }, []);
+
   return (
     <S.RegisterFormFooter>
       {step === "CHECK_EMAIL" ? (
@@ -32,7 +36,9 @@ const RegisterFormFooter: FC = () => {
         </S.RegisterSubmitBtn>
       ) : (
         step === "SET_USER_PROFILE" && (
-          <S.RegisterSubmitBtn>확인</S.RegisterSubmitBtn>
+          <S.RegisterSubmitBtn onClick={requestProfile}>
+            확인
+          </S.RegisterSubmitBtn>
         )
       )}
     </S.RegisterFormFooter>
