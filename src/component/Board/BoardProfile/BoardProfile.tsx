@@ -1,12 +1,21 @@
-import React, { FC } from "react";
-import { useSelector } from "react-redux";
+import React, { FC, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { getImgSrc, getSkillImgSrc } from "../../../lib/func";
+import { modalActionCreater } from "../../../module/action/modal";
+import { profileActionCreater } from "../../../module/action/profile";
 import { StoreType } from "../../../module/reducer";
 import { LoginedContainer } from "../../../style/GlobalStyle";
+import PortfolioModal from "../../Modal/portfolioModal";
 import ProjectItem from "./ProjectItem/ProjectItem";
 import * as S from "./styles";
 
 const BoardProfile: FC = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const onPasswordChangeModal = useCallback(() => {}, []);
+
   const {
     firstPortfolio,
     giturl,
@@ -14,14 +23,31 @@ const BoardProfile: FC = () => {
     skills,
     secondPortfolio,
     profileImg,
-    nickname
-  } = useSelector((store: StoreType) => store.profile);
+    nickname,
+    userEmail,
+    email
+  } = useSelector((store: StoreType) => ({
+    ...store.profile,
+    email: store.profile.userEmail,
+    userEmail: store.navigation.email
+  }));
+
+  const onProfileEdit = useCallback(() => {
+    if (email !== userEmail) return;
+    dispatch(profileActionCreater.editProfileSaga());
+    history.push("/register");
+  }, [email, userEmail]);
+
+  const onPortfolioModal = useCallback(() => {
+    if (email !== userEmail) return;
+    dispatch(modalActionCreater.portfolioEditModalOn());
+  }, [email, userEmail]);
   return (
     <LoginedContainer>
       <S.Container>
         <S.BoardProfileGlobalStyle />
         <S.BigProfileImg src={getImgSrc(profileImg)} />
-        <S.UserNickname>{name}</S.UserNickname>
+        <S.UserNickname>{nickname}</S.UserNickname>
         <S.SkillSetWrap>
           {skills.map(({ skill }) => (
             <S.SkillItem src={getSkillImgSrc(skill)} />
@@ -38,6 +64,7 @@ const BoardProfile: FC = () => {
         <S.ProjectWrap>
           {firstPortfolio ? (
             <ProjectItem
+              onClick={onPortfolioModal}
               giturl={firstPortfolio.giturl}
               id={firstPortfolio.id}
               introduce={firstPortfolio.introduce}
@@ -46,6 +73,7 @@ const BoardProfile: FC = () => {
             />
           ) : (
             <ProjectItem
+              onClick={onPortfolioModal}
               giturl={""}
               id={0}
               introduce={""}
@@ -55,6 +83,7 @@ const BoardProfile: FC = () => {
           )}
           {secondPortfolio ? (
             <ProjectItem
+              onClick={onPortfolioModal}
               giturl={secondPortfolio.giturl}
               id={secondPortfolio.id}
               introduce={secondPortfolio.introduce}
@@ -63,6 +92,7 @@ const BoardProfile: FC = () => {
             />
           ) : (
             <ProjectItem
+              onClick={onPortfolioModal}
               giturl={""}
               id={0}
               introduce={""}
@@ -71,7 +101,13 @@ const BoardProfile: FC = () => {
             />
           )}
         </S.ProjectWrap>
+        <S.FuncWrap>
+          <S.FuncText onClick={onProfileEdit}>프로필 수정</S.FuncText>
+          <S.Bar>|</S.Bar>
+          <S.FuncText onClick={onPasswordChangeModal}>비밀번호 변경</S.FuncText>
+        </S.FuncWrap>
       </S.Container>
+      <PortfolioModal />
     </LoginedContainer>
   );
 };

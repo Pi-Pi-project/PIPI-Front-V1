@@ -24,6 +24,7 @@ export const Container = styled.div`
   display: flex;
   background-color: white;
   color: #3b3b3b;
+  padding: 30px 0;
   flex-direction: column;
   align-items: center;
 `;
@@ -44,14 +45,17 @@ export const IntroduceWrap = styled.div`
 export const IntroduceLine = styled.div`
   font-size: 25px;
   font-weight: bold;
+  position: relative;
 
   ::before {
+    position: absolute;
     content: "";
     border-radius: 50%;
-    display: inline-block;
     width: 12px;
+    left: -8px;
+    top: 50%;
 
-    transform: translate(-10px, -30%);
+    transform: translate(-10px, -50%);
     height: 12px;
     background: black;
   }
@@ -67,4 +71,19 @@ export const SkillSetWrap = styled.div`
 export const ProjectWrap = styled.div`
   margin-top: 30px;
   width: 750px;
+`;
+
+export const FuncWrap = styled.div`
+  margin-top: 80px;
+  color: #61bfad;
+`;
+
+export const Bar = styled.span`
+  margin: 0 15px;
+`;
+
+export const FuncText = styled.span`
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
 `;
