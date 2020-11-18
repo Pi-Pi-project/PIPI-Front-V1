@@ -7,6 +7,7 @@ export { default as BoardApply } from "./Board/BoardApply/BoardApply";
 export { default as BoardSearch } from "./Board/BoardSearch/BoardSearch";
 export { default as BoardMember } from "./Board/BoardMember/BoardMember";
 export { default as BoardProfile } from "./Board/BoardProfile/BoardProfile";
+export { default as BoardManagement } from "./Board/BoardManagement/BoardManagement";
 export { default as Management } from "./Management/Management";
 export { default as Calander } from "./Calander/Calander";
 export { default as ToDoList } from "./ToDoList/ToDoList";
