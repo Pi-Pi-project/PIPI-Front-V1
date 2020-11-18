@@ -6,8 +6,13 @@ export interface ModalState {
   isOpen: boolean;
 }
 
+export interface PortfolioModalState {
+  isOpen: boolean;
+}
+
 interface ModalReducerState {
   formModal: ModalState;
+  portfoioModal: PortfolioModalState;
 }
 
 const initialState: ModalReducerState = {
@@ -15,6 +20,9 @@ const initialState: ModalReducerState = {
     isOpen: false,
     title: "",
     subTitle: ""
+  },
+  portfoioModal: {
+    isOpen: false
   }
 };
 
@@ -39,6 +47,22 @@ const modalReducer = (
           isOpen: false,
           title: "",
           subTitle: ""
+        }
+      };
+    }
+    case modalAction.PORTFOLIO_EDIT_MODAL_ON: {
+      return {
+        ...state,
+        portfoioModal: {
+          isOpen: true
+        }
+      };
+    }
+    case modalAction.PORTFOLIO_EDIT_MODAL_OFF: {
+      return {
+        ...state,
+        portfoioModal: {
+          isOpen: false
         }
       };
     }
