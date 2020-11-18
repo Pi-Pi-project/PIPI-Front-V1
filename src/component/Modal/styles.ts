@@ -3,13 +3,41 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
+  top: 0;
+  left: 0;
   position: fixed;
   background-color: rgb(101, 101, 101, 0.52);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 10;
+  z-index: 10000000;
+`;
+
+export const WhiteBackground = styled.div`
+  background-color: white;
+`;
+
+export const Button = styled.button`
+  background-color: #61bfad;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  color: white;
+  padding: 3px 15px;
+  font-weight: bold;
+`;
+
+export const ButtonWrap = styled.div`
+  padding: 20px 0;
+  text-align: center;
+`;
+
+export const ProjectWrap = styled.div`
+  width: 800px;
+  padding: 30px;
+  height: 600px;
+  overflow-y: auto;
 `;
 
 export const Modal = styled.div`
