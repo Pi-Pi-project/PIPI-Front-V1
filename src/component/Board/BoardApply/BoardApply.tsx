@@ -8,7 +8,7 @@ const BoardApply: FC = () => {
   const list = useSelector((store: StoreType) => store.board.boardApply.list);
   return (
     <div>
-      <BoardHeader activeIndex={1} />
+      <BoardHeader activeIndex={3} />
       <ApplyPostList data={list} />
     </div>
   );
