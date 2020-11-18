@@ -4,9 +4,9 @@ import {
   BoardApplyContainer,
   BoardDetailContainer,
   BoardListContainer,
+  BoardManagementContainer,
   BoardMemberContainer,
   BoardMineContainer,
-  BoardProfileContainer,
   BoardSearchContainer,
   BoardWriteContainer
 } from "../container";
@@ -21,10 +21,14 @@ const BoardRouter: FC = () => {
       <Route exact path="/board/apply" component={BoardApplyContainer} />
       <Route
         exact
+        path="/board/management"
+        component={BoardManagementContainer}
+      />
+      <Route
+        exact
         path="/board/search/:category"
         component={BoardSearchContainer}
       />
-      <Route exact path="/board/profile" component={BoardProfileContainer} />
       <Route exact path="/board/member/:id" component={BoardMemberContainer} />
       <Redirect to="/board/list" />
     </Switch>
