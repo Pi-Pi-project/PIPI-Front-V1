@@ -1,6 +1,6 @@
 import Axios, { AxiosResponse } from "axios";
 
-export const BASE_URL = "http://13.125.219.116";
+export const BASE_URL = "http://15.164.245.146";
 export const JWT_TOKEN = "JWT";
 export const REFRESH_TOKEN = "REFRESH";
 export const BASE_IMG_URL =
@@ -52,5 +52,14 @@ export const requestApiWithAccessToken = async (
     return res;
   } catch (err) {
     throw err.response.status;
+  }
+};
+
+export const checkIsLogin = async () => {
+  try {
+    await requestApiWithAccessToken("get", "/user/token");
+    return true;
+  } catch (err) {
+    return false;
   }
 };
