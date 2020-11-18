@@ -21,7 +21,7 @@ export const HrefButton = styled(Link)<{ isActive?: boolean }>`
   font-weight: bold;
   padding: 5px 10px;
   margin: 0 5px;
-  width: 209px;
+  width: 160px;
   display: inline-block;
   text-align: center;
   box-sizing: border-box;
@@ -32,7 +32,7 @@ export const HrefButton = styled(Link)<{ isActive?: boolean }>`
   background-color: #ffffff;
 
   &:first-child {
-    margin: 0;
+    margin-left: 0;
   }
 
   ${props =>

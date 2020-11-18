@@ -23,13 +23,16 @@ const BoardHeader: FC<Props> = ({ activeIndex }) => {
           <S.HrefButton to="/board/list" isActive={activeIndex === 0}>
             공고 게시판
           </S.HrefButton>
-          <S.HrefButton to="/board/apply" isActive={activeIndex === 1}>
+          <S.HrefButton to="/board/mine" isActive={activeIndex === 1}>
+            내 공고
+          </S.HrefButton>
+          <S.HrefButton to="/board/management" isActive={activeIndex === 2}>
+            내 프로젝트
+          </S.HrefButton>
+          <S.HrefButton to="/board/apply" isActive={activeIndex === 3}>
             신청 목록
           </S.HrefButton>
-          <S.HrefButton to="/board/mine" isActive={activeIndex === 2}>
-            마이 프로젝트
-          </S.HrefButton>
-          <S.HrefButton to="/board/write" isActive={activeIndex === 3}>
+          <S.HrefButton to="/board/write" isActive={activeIndex === 4}>
             공고문 쓰기
           </S.HrefButton>
         </div>
