@@ -55,6 +55,14 @@ const RegisterFormBody: FC = () => {
     []
   );
 
+  const requestProfileKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLInputElement>) => {
+      if (checkEnterKeyCode(e.key))
+        dispatch(registerActionCreater.requestProfileSaga());
+    },
+    []
+  );
+
   return (
     <S.RegisterFormBody>
       {step === "CHECK_EMAIL" ? (
@@ -159,6 +167,7 @@ const RegisterFormBody: FC = () => {
             placeholder="깃허브 주소"
             type="text"
             onChange={changeHandler}
+            onKeyDown={requestProfileKeyDown}
             value={github}
             name="github"
           />
@@ -166,6 +175,7 @@ const RegisterFormBody: FC = () => {
             placeholder="한 줄 소개"
             type="text"
             onChange={changeHandler}
+            onKeyDown={requestProfileKeyDown}
             value={introduce}
             name="introduce"
           />
