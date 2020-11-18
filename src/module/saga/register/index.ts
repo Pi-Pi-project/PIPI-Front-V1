@@ -1,5 +1,11 @@
 import { call, put, select, takeEvery } from "redux-saga/effects";
-import { requestApi } from "../../../lib/api";
+import {
+  JWT_TOKEN,
+  REFRESH_TOKEN,
+  requestApi,
+  requestApiWithAccessToken
+} from "../../../lib/api";
+import { SkillData } from "../../../lib/static";
 import { modalActionCreater } from "../../action/modal";
 import { registerAction, registerActionCreater } from "../../action/register";
 import { StoreType } from "../../reducer";
@@ -66,19 +72,17 @@ function* requestRegisterSaga() {
   }
 
   try {
-    yield call(requestApi, "post", "/user", {
+    const {
+      data: { accessToken, refreshToken }
+    } = yield call(requestApi, "post", "/user", {
       email,
       password,
       nickname
     });
 
-    yield put(registerActionCreater.setStep("SET_USER_PROFILE"));
-    yield put(
-      modalActionCreater.formModalOn({
-        title: "성공했습니다",
-        subTitle: "프로필 설정을 진행합니다."
-      })
-    );
+    window.localStorage.setItem(JWT_TOKEN, accessToken);
+    window.localStorage.setItem(REFRESH_TOKEN, refreshToken);
+    window.location.href = "/board/list";
   } catch (err) {
     yield put(
       modalActionCreater.formModalOn({
@@ -90,14 +94,39 @@ function* requestRegisterSaga() {
 }
 
 function* requestProfileSaga() {
-  const email = yield select((store: StoreType) => store.register);
+  const { skills, github, introduce, fileData } = yield select(
+    (store: StoreType) => store.register
+  );
+
+  const skillsStringArr: string[] = skills.map(
+    ({ showName }: SkillData) => showName
+  );
+
+  const formData = new FormData();
+  skills.length &&
+    skillsStringArr.forEach(skill => {
+      formData.append("skills", skill);
+    });
+  github && formData.append("giturl", github);
+  introduce && formData.append("introduce", introduce);
+  fileData && formData.append("profileImg", fileData);
+
+  try {
+    yield call(requestApiWithAccessToken, "post", "/user/profile", formData);
+    yield put(
+      modalActionCreater.formModalOn({
+        title: "성공했습니다",
+        subTitle: "프로필 설정을 완료했습니다"
+      })
+    );
+  } catch (err) {}
 }
 
 function* registerSaga() {
   yield takeEvery(registerAction.CHECK_EMAIL_SAGA, checkEmailSaga);
   yield takeEvery(registerAction.CHECK_CODE_SAGA, checkCodeSaga);
   yield takeEvery(registerAction.REQUEST_REGISTER_SAGA, requestRegisterSaga);
-  yield takeEvery(registerAction.REQUEST_REGISTER_SAGA, requestProfileSaga);
+  yield takeEvery(registerAction.REQUEST_PROFILE_SAGA, requestProfileSaga);
 }
 
 export default registerSaga;
