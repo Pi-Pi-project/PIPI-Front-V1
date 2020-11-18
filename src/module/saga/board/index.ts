@@ -191,6 +191,14 @@ function* rejectApplySaga(
   } catch (err) {}
 }
 
+function* getBoardManagementSaga() {
+  try {
+    const { data } = yield call(requestApiWithAccessToken, "get", "/project");
+
+    yield put(boardActionCreater.getBoardManagement(data));
+  } catch (err) {}
+}
+
 function* boardSaga() {
   yield takeEvery(boardAction.GET_BOARD_DETAIL_SAGA, getBoardDetailSaga);
   yield takeEvery(boardAction.APPLY_PROJECT_SAGA, applyProjectSaga);
@@ -205,6 +213,10 @@ function* boardSaga() {
   yield takeLatest(boardAction.GET_BOARD_DOING_SAGA, getBoardDoingSaga);
   yield takeLatest(boardAction.GET_BOARD_LIST_SAGA, getBoardListSaga);
   yield takeLatest(boardAction.GET_BOARD_APPLY_SAGA, getBoardApplySaga);
+  yield takeEvery(
+    boardAction.GET_BOARD_MANAGEMENT_SAGA,
+    getBoardManagementSaga
+  );
 }
 
 export default boardSaga;

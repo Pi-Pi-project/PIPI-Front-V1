@@ -3,13 +3,17 @@ import {
   PostItem,
   DetailPostItem,
   ApplyUser,
-  ApplyPost
+  ApplyPost,
+  ProjectItem
 } from "../../reducer/board";
 
 interface ApplyUserObj {
   userEmail: string;
   userNickname: string;
 }
+
+const GET_BOARD_MANAGEMENT_SAGA = "board/GET_BOARD_MANAGEMENT_SAGA" as const;
+const GET_BOARD_MANAGEMENT = "board/GET_BOARD_MANAGEMENT" as const;
 
 const GET_BOARD_LIST_SAGA = "board/GET_BOARD_LIST_SAGA" as const;
 const GET_BOARD_LIST = "board/GET_BOARD_LIST" as const;
@@ -43,6 +47,15 @@ const ACCEPT_APPLY_SAGA = "board/ACCEPT_APPLY_SAGA" as const;
 const REJECT_APPLY_SAGA = "board/REJECT_APPLY_SAGA" as const;
 
 const EDIT_BOARD_MEMBER = "board/EDIT_BOARD_MEMBER" as const;
+
+const getBoardManagement = (payload: ProjectItem[]) => ({
+  type: GET_BOARD_MANAGEMENT,
+  payload
+});
+
+const getBoardManagementSaga = () => ({
+  type: GET_BOARD_MANAGEMENT_SAGA
+});
 
 const editBoardMember = (payload: { email: string; accept: string }) => ({
   type: EDIT_BOARD_MEMBER,
@@ -159,7 +172,9 @@ type BoardAction =
   | ReturnType<typeof getPostApplyUserListSaga>
   | ReturnType<typeof rejectApplySaga>
   | ReturnType<typeof acceptApplySaga>
-  | ReturnType<typeof editBoardMember>;
+  | ReturnType<typeof editBoardMember>
+  | ReturnType<typeof getBoardManagement>
+  | ReturnType<typeof getBoardManagementSaga>;
 
 export const boardAction = {
   GET_BOARD_LIST_SAGA,
@@ -182,7 +197,9 @@ export const boardAction = {
   GET_POST_APPLY_USER_LIST_SAGA,
   ACCEPT_APPLY_SAGA,
   REJECT_APPLY_SAGA,
-  EDIT_BOARD_MEMBER
+  EDIT_BOARD_MEMBER,
+  GET_BOARD_MANAGEMENT,
+  GET_BOARD_MANAGEMENT_SAGA
 };
 
 export const boardActionCreater = {
@@ -206,7 +223,9 @@ export const boardActionCreater = {
   getPostApplyUserList,
   acceptApplySaga,
   rejectApplySaga,
-  editBoardMember
+  editBoardMember,
+  getBoardManagement,
+  getBoardManagementSaga
 };
 
 export default BoardAction;

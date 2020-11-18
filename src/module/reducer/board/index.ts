@@ -34,6 +34,13 @@ export interface DetailPostItem {
   content: string;
 }
 
+export interface ProjectItem {
+  id: number;
+  idea: string;
+  img: string;
+  title: string;
+}
+
 interface BoardItem {
   list: PostItem[];
   page: number;
@@ -61,6 +68,7 @@ interface BoardReducerState {
   boardSearch: BoardItem;
   postApply: ApplyPost;
   detail: DetailPostItem;
+  project: ProjectItem[];
 }
 
 const initialBoardItem: BoardItem = {
@@ -94,7 +102,8 @@ const boardInitialState: BoardReducerState = {
     userEmail: "",
     userImg: "",
     userNickname: ""
-  }
+  },
+  project: []
 };
 
 const boardReducer = (
@@ -153,6 +162,12 @@ const boardReducer = (
       return {
         ...state,
         postApply: action.payload
+      };
+    }
+    case boardAction.GET_BOARD_MANAGEMENT: {
+      return {
+        ...state,
+        project: action.payload
       };
     }
     case boardAction.CHANGE_SEARCH_MODAL: {
