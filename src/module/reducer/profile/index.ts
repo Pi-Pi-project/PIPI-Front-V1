@@ -16,11 +16,13 @@ interface Skills {
 export interface ProfileReducerState {
   profileImg: string;
   nickname: string;
+  userEmail: string;
   skills: Skills[];
   giturl: string;
   introduce: string;
   firstPortfolio: Portfolio;
   secondPortfolio: Portfolio;
+  portfolios: Portfolio[];
 }
 
 const initialPortfolio: Portfolio = {
@@ -38,6 +40,8 @@ const initialState: ProfileReducerState = {
   introduce: "",
   nickname: "",
   profileImg: "",
+  userEmail: "",
+  portfolios: [],
   skills: []
 };
 
@@ -47,7 +51,16 @@ const profileReducer = (
 ): ProfileReducerState => {
   switch (action.type) {
     case profileAction.GET_PROFILE: {
-      return action.payload;
+      return {
+        ...state,
+        ...action.payload
+      };
+    }
+    case profileAction.GET_PORTFOLIO: {
+      return {
+        ...state,
+        portfolios: action.payload
+      };
     }
     default: {
       return state;
