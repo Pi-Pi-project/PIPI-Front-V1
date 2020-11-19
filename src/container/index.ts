@@ -10,3 +10,5 @@ export { default as BoardMemberContainer } from "./Board/BoardMember/BoardMember
 export { default as BoardManagementContainer } from "./Board/BoardManagement/BoardManagementContainer";
 export { default as ProfileContainer } from "./Profile/ProfileContainer";
 export { default as ManagementContainer } from "./Management/ManagementContainer";
+export { default as AdminLoginContainer } from "./Admin/AdminLoginContainer";
+export { default as AdminMainContainer } from "./Admin/AdminMainContainer";
