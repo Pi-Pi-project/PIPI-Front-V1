@@ -7,6 +7,8 @@ import profileSaga from "./profile";
 import registerSaga from "./register";
 import writeSaga from "./write";
 import managementSaga from "./management";
+import adminLoginSaga from "./adminLogin";
+import adminMainSaga from "./adminMain";
 
 function* rootSaga() {
   yield all([
@@ -17,7 +19,9 @@ function* rootSaga() {
     writeSaga(),
     navigationSaga(),
     profileSaga(),
-    managementSaga()
+    managementSaga(),
+    adminLoginSaga(),
+    adminMainSaga()
   ]);
 }
 
