@@ -1,8 +1,10 @@
 import Axios, { AxiosResponse } from "axios";
 
 export const BASE_URL = "http://15.164.245.146";
+
 export const JWT_TOKEN = "JWT";
 export const REFRESH_TOKEN = "REFRESH";
+
 export const BASE_IMG_URL =
   "https://pipi-project.s3.ap-northeast-2.amazonaws.com";
 
