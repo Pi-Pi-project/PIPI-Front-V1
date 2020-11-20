@@ -38,13 +38,17 @@ export const Button = styled.button`
 
 export const Main = styled.div`
   flex: 1;
+  overflow-y: auto;
   display: flex;
 `;
 
 export const ListWrap = styled.div`
   border: 1px solid #707070;
   background-color: #ffffff;
+  margin-top: 20px;
   flex: 1;
+  padding: 20px;
+  overflow-y: auto;
 `;
 
 export const Half = styled.div`
