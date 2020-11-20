@@ -8,6 +8,8 @@ import write from "./write";
 import navigation from "./navigation";
 import profile from "./profile";
 import management from "./management";
+import adminLogin from "./AdminLogin";
+import adminMain from "./AdminMain";
 
 const rootReducer = combineReducers({
   modal,
@@ -18,7 +20,9 @@ const rootReducer = combineReducers({
   write,
   navigation,
   profile,
-  management
+  management,
+  adminLogin,
+  adminMain
 });
 
 export type StoreType = ReturnType<typeof rootReducer>;
