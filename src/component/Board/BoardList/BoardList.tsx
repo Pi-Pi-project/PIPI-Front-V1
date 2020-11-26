@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { StoreType } from "../../../module/reducer";
+import NoneList from "../../Post/PostList/NoneList";
 import ViewPostList from "../../Post/PostList/ViewPostList";
 import BoardHeader from "../BoardHeader/BoardHeader";
 
@@ -11,7 +12,15 @@ const BoardList: FC = () => {
   return (
     <div>
       <BoardHeader activeIndex={0} />
-      {isLoading && <ViewPostList data={list} />}
+      {isLoading ? (
+        list.length ? (
+          <ViewPostList data={list} />
+        ) : (
+          <NoneList />
+        )
+      ) : (
+        ""
+      )}
     </div>
   );
 };
