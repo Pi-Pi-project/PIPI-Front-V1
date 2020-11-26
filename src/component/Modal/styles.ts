@@ -14,6 +14,10 @@ export const Container = styled.div`
   z-index: 10000000;
 `;
 
+export const SuccessBtnWrap = styled.div`
+  display: flex;
+`;
+
 export const WhiteBackground = styled.div`
   background-color: white;
 `;
@@ -56,11 +60,6 @@ export const Modal = styled.div`
   min-width: 400px;
 `;
 
-export const Title = styled.div`
-  font-size: 25px;
-  font-weight: bold;
-`;
-
 export const SubTitle = styled.div`
   font-size: 20px;
   font-weight: bold;
@@ -75,5 +74,60 @@ export const OkBtn = styled.button`
   border-radius: 20px;
   width: 35%;
   padding: 5px 10px;
+  border: 2px solid transparent;
+  transition: 0.5s all;
+
+  &:hover {
+    background-color: white;
+    color: #61bfad;
+    border: 2px solid #61bfad;
+  }
+`;
+export const Red = styled.span`
+  color: #fb0d0d;
+`;
+
+export const SuccessProjectBtn = styled(OkBtn)`
+  transform: translateY(15px);
+  width: 130px;
+
+  & + & {
+    margin-left: 10px;
+  }
+`;
+
+export const Input = styled.input`
+  font-size: 23px;
+  margin-top: 15px;
+  font-weight: bold;
+  color: rgba(59, 59, 59, 0.48);
+  width: 75%;
   border: none;
+  border-bottom: 1px solid #707070;
+`;
+
+export const SmallText = styled.div`
+  font-weight: bold;
+  font-size: 12px;
+`;
+
+export const Title = styled.div`
+  font-size: 25px;
+  font-weight: bold;
+`;
+
+export const TextArea = styled.textarea`
+  border: 1px solid #707070;
+  border-top: none;
+  font-size: 20px;
+  margin-bottom: 10px;
+  height: 100px;
+  width: 75%;
+  font-weight: bold;
+  color: rgba(59, 59, 59, 0.48);
+  resize: none;
+
+  ${Title} + & {
+    margin-top: 50px;
+  }
 `;
