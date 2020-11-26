@@ -11,7 +11,6 @@ interface Props {
 }
 
 const MinePostList: FC<Props> = ({ data }) => {
-  const dispatch = useDispatch();
   const onScrollHandler = useCallback((e: UIEvent<HTMLDivElement>) => {
     const target = e.target as HTMLLIElement;
     if (target.scrollHeight - target.clientHeight === target.scrollTop) {

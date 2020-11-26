@@ -8,3 +8,9 @@ export const Container = styled.div`
   ::-webkit-scrollbar {
   }
 `;
+
+export const NoneListDiv = styled.div`
+  padding-top: 100px;
+  text-align: center;
+  font-size: 30px;
+`;
