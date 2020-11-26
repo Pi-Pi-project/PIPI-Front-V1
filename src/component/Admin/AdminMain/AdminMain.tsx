@@ -1,9 +1,24 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import { checkIsLogin, logOut } from "../../../lib/api";
+import { StoreType } from "../../../module/reducer";
 import { LoginedContainer } from "../../../style/GlobalStyle";
 import AdminItem from "../AdminItem/AdminItem";
 import * as S from "./styles";
 
 const AdminMain: FC = () => {
+  const history = useHistory();
+  const { projects, reports } = useSelector(
+    (store: StoreType) => store.adminMain
+  );
+
+  useEffect(() => {
+    checkIsLogin().then(isLogin => {
+      !isLogin && history.push("/admin/login");
+    });
+  }, []);
+
   return (
     <S.Container>
       <S.AdminHeader>
@@ -13,7 +28,7 @@ const AdminMain: FC = () => {
             <S.ProjectName color="#3b3b3b"> ADMIN</S.ProjectName>
           </div>
           <div>
-            <S.Button>로그아웃</S.Button>
+            <S.Button onClick={logOut}>로그아웃</S.Button>
           </div>
         </LoginedContainer>
       </S.AdminHeader>
@@ -21,13 +36,29 @@ const AdminMain: FC = () => {
         <S.Half>
           <S.Title>Report Log</S.Title>
           <S.ListWrap>
-            <AdminItem></AdminItem>
+            {reports.map(
+              ({ userNickname, reporterEmail, reportedEmail, profileImg }) => (
+                <AdminItem
+                  userNickname={userNickname}
+                  reporterEmail={reporterEmail}
+                  reportedEmail={reportedEmail}
+                  profileImg={profileImg}
+                />
+              )
+            )}
           </S.ListWrap>
         </S.Half>
         <S.Half>
           <S.Title>Application for Completion Log</S.Title>
           <S.ListWrap>
-            <AdminItem></AdminItem>
+            {/* {projects.map(({ title, projectId, giturl, introduce }) => (
+              <AdminItem
+                title={title}
+                projectId={projectId}
+                giturl={giturl}
+                introduce={introduce}
+              />
+            ))} */}
           </S.ListWrap>
         </S.Half>
       </S.Main>
