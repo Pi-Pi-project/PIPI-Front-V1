@@ -113,6 +113,8 @@ function* requestProfileSaga() {
 
   try {
     yield call(requestApiWithAccessToken, "post", "/user/profile", formData);
+    window.history.back();
+
     yield put(
       modalActionCreater.formModalOn({
         title: "성공했습니다",
