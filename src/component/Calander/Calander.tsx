@@ -14,7 +14,7 @@ const Calander: FC = () => {
   const dispatch = useDispatch();
   const [list, setList] = useState<WindowCalanderType>([]);
 
-  const { month, year, selectDate, todos } = useSelector(
+  const { month, year, selectDate, todos, id } = useSelector(
     (store: StoreType) => store.management
   );
 
@@ -23,10 +23,8 @@ const Calander: FC = () => {
   }, [month, year]);
 
   useEffect(() => {
-    const { year, date, month } = selectDate;
-    if (year === 0) return;
     dispatch(managementActionCreater.getTodoSaga());
-  }, [selectDate]);
+  }, [selectDate, id]);
 
   const nextMonth = useCallback(() => {
     dispatch(managementActionCreater.nextMonth());
