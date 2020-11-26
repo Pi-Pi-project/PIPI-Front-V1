@@ -3,11 +3,17 @@ import { TodoItem } from "../../reducer/management";
 const SELECT_DAY = "management/SELECT_DAY" as const;
 const NEXT_MONTH = "management/NEXT_MONTH" as const;
 const PREV_MONTH = "management/PREV_MONTH" as const;
-const GET_TODO_SAGA = "management/GET_TODO_SAGA" as const;
 const GET_TODO = "management/GET_TODO" as const;
 const SET_ID = "management/SET_ID" as const;
+
+const GET_TODO_SAGA = "management/GET_TODO_SAGA" as const;
 const CHECK_TODO_SAGA = "management/CHECK_TODO_SAGA" as const;
 const ADD_TODO_SAGA = "management/ADD_TODO_SAGA" as const;
+const SUCCESS_PROJECT_SAGA = "management/SUCCESS_PROJECT_SAGA" as const;
+
+const successProjectSaga = () => ({
+  type: SUCCESS_PROJECT_SAGA
+});
 
 const addTodoSaga = (payload: string) => ({
   type: ADD_TODO_SAGA,
@@ -54,7 +60,8 @@ type ManagementAction =
   | ReturnType<typeof getTodoSaga>
   | ReturnType<typeof setId>
   | ReturnType<typeof checkTodoSaga>
-  | ReturnType<typeof addTodoSaga>;
+  | ReturnType<typeof addTodoSaga>
+  | ReturnType<typeof successProjectSaga>;
 
 export const managementAction = {
   SELECT_DAY,
@@ -64,7 +71,8 @@ export const managementAction = {
   GET_TODO_SAGA,
   SET_ID,
   CHECK_TODO_SAGA,
-  ADD_TODO_SAGA
+  ADD_TODO_SAGA,
+  SUCCESS_PROJECT_SAGA
 };
 
 export const managementActionCreater = {
@@ -75,7 +83,8 @@ export const managementActionCreater = {
   getTodoSaga,
   setId,
   checkTodoSaga,
-  addTodoSaga
+  addTodoSaga,
+  successProjectSaga
 };
 
 export default ManagementAction;

@@ -20,18 +20,22 @@ interface ManagementReducer {
   year: number;
   month: number;
   todos: TodoItem[];
+  giturl: string;
+  introduce: string;
 }
 
 const managementReducerState: ManagementReducer = {
   selectDate: {
-    date: 0,
-    month: 0,
-    year: 0
+    date: new Date().getDate(),
+    month: new Date().getMonth() + 1,
+    year: new Date().getFullYear()
   },
   id: 0,
   year: new Date().getFullYear(),
   month: new Date().getMonth() + 1,
-  todos: []
+  todos: [],
+  giturl: "",
+  introduce: ""
 };
 
 const managementReducer = (

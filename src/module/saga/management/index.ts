@@ -1,10 +1,11 @@
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { requestApiWithAccessToken } from "../../../lib/api";
-import { padStart } from "../../../lib/func";
+import { emptyIsInclude, padStart } from "../../../lib/func";
 import {
   managementAction,
   managementActionCreater
 } from "../../action/management";
+import { modalActionCreater } from "../../action/modal";
 import { StoreType } from "../../reducer";
 
 function* getTodoSaga() {
@@ -12,6 +13,7 @@ function* getTodoSaga() {
     id,
     selectDate: { year, month, date }
   } = yield select((store: StoreType) => store.management);
+  if (!id) return;
 
   try {
     const res = yield call(
@@ -55,14 +57,63 @@ function* addTodoSaga(
       projectId: id
     });
 
+    yield put(modalActionCreater.addTodoModalOff());
+
+    yield put(
+      modalActionCreater.formModalOn({
+        title: "성공하였습니다",
+        subTitle: "등록하였습니다"
+      })
+    );
     yield put(managementActionCreater.getTodoSaga());
   } catch (err) {}
+}
+
+function* successProjectSaga() {
+  const { id, giturl, introduce } = yield select((store: StoreType) => ({
+    ...store.modal.projectSuccessModal,
+    id: store.management.id
+  }));
+  try {
+    if (emptyIsInclude([id, giturl, introduce])) {
+      alert("빈칸을 모두 채워주세요");
+      return;
+    }
+  } catch (err) {}
+
+  try {
+    yield call(requestApiWithAccessToken, "put", "/project/complete", {
+      id,
+      giturl,
+      introduce
+    });
+
+    yield put(modalActionCreater.projectSuccessModalOff());
+    yield put(
+      modalActionCreater.formModalOn({
+        title: "성공했습니다",
+        subTitle: "프로젝트 완료를 신청했습니다"
+      })
+    );
+  } catch (err) {
+    switch (err) {
+      case 405: {
+        alert("이미 완료한 동아리 입니다");
+        return;
+      }
+      case 409: {
+        alert("PM이 아닙니다");
+        return;
+      }
+    }
+  }
 }
 
 function* managementSaga() {
   yield takeEvery(managementAction.GET_TODO_SAGA, getTodoSaga);
   yield takeEvery(managementAction.CHECK_TODO_SAGA, checkTodoSaga);
   yield takeEvery(managementAction.ADD_TODO_SAGA, addTodoSaga);
+  yield takeEvery(managementAction.SUCCESS_PROJECT_SAGA, successProjectSaga);
 }
 
 export default managementSaga;
