@@ -8,9 +8,10 @@ export interface ProjectApplyItem {
 }
 
 export interface ReportItem {
-  projectId: number;
-  title: string;
-  coverImg: string;
+  profileImg: string;
+  reportedEmail: string;
+  reporterEmail: string;
+  userNickname: string;
 }
 interface AdminMainReducer {
   reports: ReportItem[];
