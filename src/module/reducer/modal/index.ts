@@ -10,9 +10,22 @@ export interface PortfolioModalState {
   isOpen: boolean;
 }
 
+export interface ProjectSuccessModalState {
+  giturl: string;
+  introduce: string;
+  isOpen: boolean;
+}
+
+export interface AddTodoModalState {
+  content: string;
+  isOpen: boolean;
+}
+
 interface ModalReducerState {
   formModal: ModalState;
   portfoioModal: PortfolioModalState;
+  projectSuccessModal: ProjectSuccessModalState;
+  addTodoModal: AddTodoModalState;
 }
 
 const initialState: ModalReducerState = {
@@ -23,6 +36,15 @@ const initialState: ModalReducerState = {
   },
   portfoioModal: {
     isOpen: false
+  },
+  projectSuccessModal: {
+    introduce: "",
+    giturl: "",
+    isOpen: false
+  },
+  addTodoModal: {
+    isOpen: false,
+    content: ""
   }
 };
 
@@ -63,6 +85,71 @@ const modalReducer = (
         ...state,
         portfoioModal: {
           isOpen: false
+        }
+      };
+    }
+    case modalAction.PROJECT_SUCCESS_MODAL_ON: {
+      return {
+        ...state,
+        projectSuccessModal: {
+          ...state.projectSuccessModal,
+          isOpen: true
+        }
+      };
+    }
+    case modalAction.PROJECT_SUCCESS_MODAL_OFF: {
+      return {
+        ...state,
+        projectSuccessModal: {
+          giturl: "",
+          introduce: "",
+          isOpen: false
+        }
+      };
+    }
+    case modalAction.PROJECT_SUCCESS_MODAL_CHANGE_INPUT: {
+      const { name, value } = action.payload;
+      return {
+        ...state,
+        projectSuccessModal: {
+          ...state.projectSuccessModal,
+          [name]: value
+        }
+      };
+    }
+    case modalAction.PROJECT_SUCCESS_MODAL_ON: {
+      return {
+        ...state,
+        addTodoModal: {
+          ...state.addTodoModal,
+          isOpen: true
+        }
+      };
+    }
+    case modalAction.ADD_TODO_MODAL_ON: {
+      return {
+        ...state,
+        addTodoModal: {
+          ...state.addTodoModal,
+          isOpen: true
+        }
+      };
+    }
+    case modalAction.ADD_TODO_MODAL_OFF: {
+      return {
+        ...state,
+        addTodoModal: {
+          isOpen: false,
+          content: ""
+        }
+      };
+    }
+    case modalAction.ADD_TODO_MODAL_CHANGE_CONTENT: {
+      return {
+        ...state,
+        addTodoModal: {
+          ...state.addTodoModal,
+          content: action.payload
         }
       };
     }
