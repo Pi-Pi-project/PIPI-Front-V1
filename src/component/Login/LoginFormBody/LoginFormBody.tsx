@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC, useCallback, KeyboardEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { checkEnterKeyCode } from "../../../lib/func";
+import { checkEnterKey } from "../../../lib/func";
 import { loginActionCreater } from "../../../module/action/login";
 import { StoreType } from "../../../module/reducer";
 import * as S from "../styles";
@@ -11,8 +11,7 @@ const LoginFormBody: FC = () => {
   const { id, password } = useSelector((store: StoreType) => store.login);
 
   const keyDownHandler = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
-    if (checkEnterKeyCode(e.key))
-      dispatch(loginActionCreater.requestLoginSaga());
+    if (checkEnterKey(e.key)) dispatch(loginActionCreater.requestLoginSaga());
   }, []);
 
   const changeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
