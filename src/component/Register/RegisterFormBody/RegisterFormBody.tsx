@@ -2,7 +2,7 @@ import React, { ChangeEvent, FC, KeyboardEvent, useCallback } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { checkEnterKeyCode } from "../../../lib/func";
+import { checkEnterKey } from "../../../lib/func";
 import { SkillData, skillDataArray } from "../../../lib/static";
 import { registerActionCreater } from "../../../module/action/register";
 import { StoreType } from "../../../module/reducer";
@@ -34,13 +34,11 @@ const RegisterFormBody: FC = () => {
   }, []);
 
   const checkEmail = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
-    if (checkEnterKeyCode(e.key))
-      dispatch(registerActionCreater.checkEmailSaga());
+    if (checkEnterKey(e.key)) dispatch(registerActionCreater.checkEmailSaga());
   }, []);
 
   const checkCodeKeyDown = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
-    if (checkEnterKeyCode(e.key))
-      dispatch(registerActionCreater.checkCodeSaga());
+    if (checkEnterKey(e.key)) dispatch(registerActionCreater.checkCodeSaga());
   }, []);
 
   const reSendCheckCode = useCallback(() => {
@@ -49,7 +47,7 @@ const RegisterFormBody: FC = () => {
 
   const requestRegisterKeyDown = useCallback(
     (e: KeyboardEvent<HTMLInputElement>) => {
-      if (checkEnterKeyCode(e.key))
+      if (checkEnterKey(e.key))
         dispatch(registerActionCreater.requestRegisterSaga());
     },
     []
@@ -57,7 +55,7 @@ const RegisterFormBody: FC = () => {
 
   const requestProfileKeyDown = useCallback(
     (e: KeyboardEvent<HTMLInputElement>) => {
-      if (checkEnterKeyCode(e.key))
+      if (checkEnterKey(e.key))
         dispatch(registerActionCreater.requestProfileSaga());
     },
     []
