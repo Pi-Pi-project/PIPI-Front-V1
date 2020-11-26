@@ -1,6 +1,7 @@
 import React, { FC, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { logOut } from "../../../lib/api";
 import { getImgSrc, getSkillImgSrc } from "../../../lib/func";
 import { modalActionCreater } from "../../../module/action/modal";
 import { profileActionCreater } from "../../../module/action/profile";
@@ -37,6 +38,10 @@ const BoardProfile: FC = () => {
     dispatch(profileActionCreater.editProfileSaga());
     history.push("/register");
   }, [email, userEmail]);
+
+  const logOutFunc = useCallback(() => {
+    logOut();
+  }, []);
 
   const onPortfolioModal = useCallback(() => {
     if (email !== userEmail) return;
@@ -105,6 +110,8 @@ const BoardProfile: FC = () => {
           <S.FuncText onClick={onProfileEdit}>프로필 수정</S.FuncText>
           <S.Bar>|</S.Bar>
           <S.FuncText onClick={onPasswordChangeModal}>비밀번호 변경</S.FuncText>
+          <S.Bar>|</S.Bar>
+          <S.FuncText onClick={logOutFunc}>로그아웃</S.FuncText>
         </S.FuncWrap>
       </S.Container>
       <PortfolioModal />
