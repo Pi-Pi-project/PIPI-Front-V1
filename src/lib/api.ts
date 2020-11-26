@@ -65,3 +65,8 @@ export const checkIsLogin = async () => {
     return false;
   }
 };
+export const logOut = () => {
+  window.localStorage.removeItem(JWT_TOKEN);
+  window.localStorage.removeItem(REFRESH_TOKEN);
+  window.location.reload();
+};
