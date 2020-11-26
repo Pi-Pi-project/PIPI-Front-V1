@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { StoreType } from "../../../module/reducer";
 import ManagementPostList from "../../Post/PostList/ManagementPostList";
+import NoneList from "../../Post/PostList/NoneList";
 import BoardHeader from "../BoardHeader/BoardHeader";
 
 const BoardManagement: FC = () => {
@@ -9,7 +10,7 @@ const BoardManagement: FC = () => {
   return (
     <div>
       <BoardHeader activeIndex={2} />
-      <ManagementPostList data={data} />
+      {data.length ? <ManagementPostList data={data} /> : <NoneList />}
     </div>
   );
 };
