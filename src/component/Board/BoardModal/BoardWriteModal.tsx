@@ -32,6 +32,11 @@ const BoardWriteModal: FC = () => {
     dispatch(writeActionCreater.setSkills(skill));
   }, []);
 
+  const clearCategory = useCallback(() => {
+    dispatch(writeActionCreater.clearCategory());
+    dispatch(writeActionCreater.changeModalState(false));
+  }, []);
+
   const closeModal = useCallback(() => {
     dispatch(writeActionCreater.changeModalState(false));
   }, []);
@@ -47,39 +52,46 @@ const BoardWriteModal: FC = () => {
               ))}
             </S.Modal>
           </div>
-          <S.SearchBox>
-            <S.MySkills>
-              {skills.map(src => (
-                <S.SkillImg src={getSkillImgSrc(src)} />
-              ))}
-            </S.MySkills>
-            <S.SkillWrap>
-              <S.Input
-                placeholder="기술스택"
-                type="text"
-                onChange={changeHandler}
-                name="skill"
-                value={skill}
-              />
-              {skill && (
-                <S.SearchSkill>
-                  {skillDataArray
-                    .filter(data => data.searchName.includes(skill))
-                    .map(data => (
-                      <div
-                        key={data.showName}
-                        onClick={() => {
-                          addSkills(data.showName);
-                        }}
-                      >
-                        {data.showName}
-                      </div>
-                    ))}
-                </S.SearchSkill>
-              )}
-            </S.SkillWrap>
-            <S.Button onClick={closeModal}>완료</S.Button>
-          </S.SearchBox>
+          <div>
+            <S.SearchBox>
+              <S.SearchMySkills>
+                {skills.map(src => (
+                  <S.SkillImg src={getSkillImgSrc(src)} />
+                ))}
+              </S.SearchMySkills>
+              <div>
+                <S.SearchInput
+                  autoComplete="off"
+                  placeholder="기술스택"
+                  type="text"
+                  onChange={changeHandler}
+                  name="skill"
+                  value={skill}
+                />
+                <S.SearchSkillWrp>
+                  <div>
+                    {skill &&
+                      skillDataArray
+                        .filter(data => data.searchName.includes(skill))
+                        .map(data => (
+                          <S.SearchSkillLine
+                            key={data.showName}
+                            onClick={() => {
+                              addSkills(data.showName);
+                            }}
+                          >
+                            {data.showName}
+                          </S.SearchSkillLine>
+                        ))}
+                  </div>
+                  <S.ButtonWrap>
+                    <S.Button onClick={clearCategory}>취소</S.Button>
+                    <S.Button onClick={closeModal}>완료</S.Button>
+                  </S.ButtonWrap>
+                </S.SearchSkillWrp>
+              </div>
+            </S.SearchBox>
+          </div>
         </div>
       </S.Container>
     )

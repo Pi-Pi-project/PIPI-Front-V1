@@ -83,6 +83,14 @@ export const MySkills = styled.div`
   justify-content: center;
 `;
 
+export const SearchMySkills = styled(MySkills)`
+  border-radius: 0;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  min-height: 100px;
+  max-width: unset;
+`;
+
 export const SkillImg = styled.div<{ src: string }>`
   width: 43px;
   height: 43px;
@@ -110,13 +118,47 @@ export const Input = styled.input`
   }
 `;
 
+export const SearchSkillLine = styled.div`
+  font-size: 20px;
+  text-align: center;
+`;
+
+export const SearchInput = styled(Input)`
+  transform: translateY(0);
+  outline: none;
+  width: 100%;
+  border: none;
+  border-top: 1px solid #707070;
+`;
+
 export const SearchBox = styled.div`
   display: flex;
+  width: 600px;
   flex-direction: column;
 `;
 
 export const SkillWrap = styled.div`
   position: relative;
+`;
+
+export const SearchSkillWrp = styled(SkillWrap)`
+  height: 190px;
+  background-color: white;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & > div:nth-child(1) {
+    height: 100px;
+    overflow-y: auto;
+  }
+`;
+
+export const ButtonWrap = styled.div`
+  text-align: center;
 `;
 
 export const SearchSkill = styled.div`
@@ -133,9 +175,15 @@ export const SearchSkill = styled.div`
 `;
 
 export const Button = styled(SubmitButton)`
-  width: 200px;
+  width: 160px;
   font-size: 20px;
   font-weight: bolder;
-  color: white;
-  margin-top: 100px;
+  color: #61bfad;
+  margin: 10px;
+
+  &:hover {
+    background: #61bfad;
+    color: white;
+    border: 3px solid #61bfad;
+  }
 `;
