@@ -5,6 +5,11 @@ const SET_MODAL_TYPE = "write/SET_MODAL_TYPE" as const;
 const SET_SKILLS = "write/SET_SKILLS" as const;
 const UPLOAD_POST_SAGA = "write/UPLOAD_POST_SAGA" as const;
 const SUCCESS_POST = "write/SUCCESS_POST" as const;
+const CLEAR_CATEGORY = "write/CLEAR_CATEGORY" as const;
+
+const clearCategory = () => ({
+  type: CLEAR_CATEGORY
+});
 
 const successPost = () => ({
   type: SUCCESS_POST
@@ -46,7 +51,8 @@ type WriteAction =
   | ReturnType<typeof setModalType>
   | ReturnType<typeof setSkills>
   | ReturnType<typeof uploadPostSaga>
-  | ReturnType<typeof successPost>;
+  | ReturnType<typeof successPost>
+  | ReturnType<typeof clearCategory>;
 
 export const writeAction = {
   INPUT_UPDATE,
@@ -55,7 +61,8 @@ export const writeAction = {
   SET_MODAL_TYPE,
   SET_SKILLS,
   UPLOAD_POST_SAGA,
-  SUCCESS_POST
+  SUCCESS_POST,
+  CLEAR_CATEGORY
 };
 
 export const writeActionCreater = {
@@ -65,7 +72,8 @@ export const writeActionCreater = {
   setModalType,
   setSkills,
   uploadPostSaga,
-  successPost
+  successPost,
+  clearCategory
 };
 
 export default WriteAction;

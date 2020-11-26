@@ -68,6 +68,13 @@ const writeReducer = (
         type: action.payload
       };
     }
+    case writeAction.CLEAR_CATEGORY: {
+      return {
+        ...state,
+        skills: [],
+        category: ""
+      };
+    }
     case writeAction.SUCCESS_POST: {
       return {
         ...state,
