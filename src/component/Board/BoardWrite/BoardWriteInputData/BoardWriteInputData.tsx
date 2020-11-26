@@ -1,12 +1,41 @@
-import React, { ChangeEvent, FC, useCallback, MouseEvent } from "react";
+import React, {
+  ChangeEvent,
+  FC,
+  useCallback,
+  MouseEvent,
+  useMemo,
+  ReactElement
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getSkillImgSrc } from "../../../../lib/func";
 import { writeActionCreater } from "../../../../module/action/write";
 import { StoreType } from "../../../../module/reducer";
+import { SkillImg } from "../../../Post/PostItem/styles";
 import * as S from "./styles";
 
 const BoardWriteInputData: FC = () => {
   const dispatch = useDispatch();
-  const file = useSelector((store: StoreType) => store.write.file);
+  const { file, category, skills } = useSelector((store: StoreType) => ({
+    file: store.write.file,
+    category: store.write.category,
+    skills: store.write.skills
+  }));
+
+  const categoryValue = useMemo<ReactElement>(() => {
+    if (!category && !skills.length) {
+      return <span>프로젝트 카테고리 & 기술 스택</span>;
+    }
+    return (
+      <>
+        <span>{category} </span>
+        <div>
+          {skills.map(src => (
+            <SkillImg src={getSkillImgSrc(src)}></SkillImg>
+          ))}
+        </div>
+      </>
+    );
+  }, [category, skills]);
 
   const fileChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     dispatch(writeActionCreater.setBannerImg(e.target.files[0]));
@@ -43,9 +72,7 @@ const BoardWriteInputData: FC = () => {
           type="text"
           placeholder="*프로젝트 카테고리"
         />
-        <S.InputButton onClick={openModal}>
-          프로젝트 카테고리 & 기술 스택
-        </S.InputButton>
+        <S.InputButton onClick={openModal}>{categoryValue}</S.InputButton>
       </S.BoardData>
       <S.BoardImg>
         <S.Title>*배너 이미지</S.Title>

@@ -65,6 +65,12 @@ export const InputButton = styled.button`
   background-color: transparent;
   text-align: left;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+
+  > div {
+    display: flex;
+  }
 `;
 
 export const BoardInput = styled.input`
