@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC, useCallback, KeyboardEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { isPrimitive } from "sequelize/types/lib/utils";
-import { checkEnterKeyCode } from "../../../lib/func";
+import { checkEnterKey } from "../../../lib/func";
 import { adminLoginActionCreater } from "../../../module/action/adminLogin";
 import { StoreType } from "../../../module/reducer";
 import * as S from "./styles";
@@ -18,7 +18,7 @@ const AdminLogin: FC = () => {
   }, []);
 
   const requestRegister = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
-    if (checkEnterKeyCode(e.key)) {
+    if (checkEnterKey(e.key)) {
       dispatch(adminLoginActionCreater.requestLoginSaga());
     }
   }, []);
