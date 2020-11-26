@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { managementActionCreater } from "../../module/action/management";
+import { modalActionCreater } from "../../module/action/modal";
 import { TodoItem } from "../../module/reducer/management";
 import * as S from "./styles";
 import ToDoItem from "./ToDoItem/ToDoItem";
@@ -12,9 +12,7 @@ interface Props {
 const ToDoList: FC<Props> = ({ todos }) => {
   const dispatch = useDispatch();
   const addTodo = useCallback(() => {
-    const todo = prompt("할일을 입력하세요");
-    if (!todo) return;
-    dispatch(managementActionCreater.addTodoSaga(todo));
+    dispatch(modalActionCreater.addTodoModalOn());
   }, []);
   return (
     <S.Container>
