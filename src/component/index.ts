@@ -13,3 +13,4 @@ export { default as Calander } from "./Calander/Calander";
 export { default as ToDoList } from "./ToDoList/ToDoList";
 export { default as AdminLogin } from "./Admin/AdminLogin/AdminLogin";
 export { default as AdminMain } from "./Admin/AdminMain/AdminMain";
+export { default as Chat } from "./Chat/Chat";

@@ -12,3 +12,4 @@ export { default as ProfileContainer } from "./Profile/ProfileContainer";
 export { default as ManagementContainer } from "./Management/ManagementContainer";
 export { default as AdminLoginContainer } from "./Admin/AdminLoginContainer";
 export { default as AdminMainContainer } from "./Admin/AdminMainContainer";
+export { default as ChatContainer } from "./chat/ChatContainer";
