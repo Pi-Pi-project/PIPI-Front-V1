@@ -39,6 +39,7 @@ module.exports = {
   ],
   devServer: {
     publicPath: "/",
-    historyApiFallback: true
+    historyApiFallback: true,
+    host: "0.0.0.0"
   }
 };
