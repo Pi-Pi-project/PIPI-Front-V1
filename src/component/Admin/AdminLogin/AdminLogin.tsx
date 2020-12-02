@@ -1,6 +1,5 @@
 import React, { ChangeEvent, FC, useCallback, KeyboardEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { isPrimitive } from "sequelize/types/lib/utils";
 import { checkEnterKey } from "../../../lib/func";
 import { adminLoginActionCreater } from "../../../module/action/adminLogin";
 import { StoreType } from "../../../module/reducer";
