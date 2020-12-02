@@ -4,7 +4,9 @@ import { useHistory } from "react-router";
 import { checkIsLogin, logOut } from "../../../lib/api";
 import { StoreType } from "../../../module/reducer";
 import { LoginedContainer } from "../../../style/GlobalStyle";
+import ApplyDetailModal from "../../Modal/ApplyDetailModal";
 import AdminItem from "../AdminItem/AdminItem";
+import ProjectAdminItem from "../AdminItem/ProjectAdminItem";
 import * as S from "./styles";
 
 const AdminMain: FC = () => {
@@ -39,6 +41,7 @@ const AdminMain: FC = () => {
             {reports.map(
               ({ userNickname, reporterEmail, reportedEmail, profileImg }) => (
                 <AdminItem
+                  key={reportedEmail + reporterEmail}
                   userNickname={userNickname}
                   reporterEmail={reporterEmail}
                   reportedEmail={reportedEmail}
@@ -51,17 +54,13 @@ const AdminMain: FC = () => {
         <S.Half>
           <S.Title>Application for Completion Log</S.Title>
           <S.ListWrap>
-            {/* {projects.map(({ title, projectId, giturl, introduce }) => (
-              <AdminItem
-                title={title}
-                projectId={projectId}
-                giturl={giturl}
-                introduce={introduce}
-              />
-            ))} */}
+            {projects.map(data => (
+              <ProjectAdminItem {...data} key={data.projectId} />
+            ))}
           </S.ListWrap>
         </S.Half>
       </S.Main>
+      <ApplyDetailModal />
     </S.Container>
   );
 };
