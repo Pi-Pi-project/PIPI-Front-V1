@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { requestApiWithAccessToken } from "../../../lib/api";
 import { getImgSrc } from "../../../lib/func";
 import { boardActionCreater } from "../../../module/action/board";
 import { ApplyUser } from "../../../module/reducer/board";
@@ -16,12 +17,21 @@ const ApplyUserItem: FC<ApplyUser> = ({
   userEmail,
   status
 }) => {
+  const [email, setEmail] = useState<string>("");
   const history = useHistory();
   const dispatch = useDispatch();
 
   const gotoProfile = useCallback(() => {
     history.push(`/profile?email=${userEmail}`);
   }, []);
+
+  const gotoChat = useCallback(() => {
+    requestApiWithAccessToken("get", `/chat?email=${userEmail}`).then(res => {
+      const { roomId } = res.data;
+      console.log(roomId);
+      history.push(`/chat/${roomId}`);
+    });
+  }, [userEmail]);
   const rejectApply = useCallback(() => {
     dispatch(
       boardActionCreater.rejectApplySaga({
@@ -49,7 +59,7 @@ const ApplyUserItem: FC<ApplyUser> = ({
         </S.UserTextWrap>
       </S.UserProfileWrap>
       <S.ButtonBoxWrap>
-        <S.Button>채팅</S.Button>
+        <S.Button onClick={gotoChat}>채팅</S.Button>
         <S.Button isActive={status === ACCEPTED} onClick={acceptApply}>
           수락
         </S.Button>
