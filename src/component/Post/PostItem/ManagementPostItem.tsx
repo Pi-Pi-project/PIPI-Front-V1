@@ -10,6 +10,10 @@ const ManagementPostItem: FC<ProjectItem> = ({ title, img, idea, id }) => {
   const goManagement = useCallback(() => {
     history.push(`/management/${id}`);
   }, []);
+
+  const goChat = useCallback(() => {
+    history.push(`/chat/${id}`);
+  }, []);
   return (
     <S.Container>
       <S.PreviewImg src={getImgSrc(img)} />
@@ -23,7 +27,7 @@ const ManagementPostItem: FC<ProjectItem> = ({ title, img, idea, id }) => {
           <S.SkillSets />
           <S.ButtonWrap>
             <S.Button onClick={goManagement}>관리</S.Button>
-            <S.Button>채팅</S.Button>
+            <S.Button onClick={goChat}>채팅</S.Button>
           </S.ButtonWrap>
         </S.BottmWrap>
       </S.ProjectIntroduce>
