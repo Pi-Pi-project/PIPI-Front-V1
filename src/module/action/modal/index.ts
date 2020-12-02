@@ -1,5 +1,18 @@
 import { ReportItem } from "../../reducer/AdminMain";
-import { ProjectSuccessModalState } from "../../reducer/modal";
+import {
+  ApplyDetailModalState,
+  ProjectSuccessModalState
+} from "../../reducer/modal";
+
+interface ReportApplyDetail {
+  reportedEmail?: string;
+  reporterEmail?: string;
+  reason?: string;
+  introduce?: string;
+  giturl?: string;
+  title?: string;
+  type: "REPORT" | "PROJECT";
+}
 
 const FORM_MODAL_ON = "modal/FORM_MODAL_ON" as const;
 const FORM_MODAL_OFF = "modal/FORM_MODAL_OFF" as const;
@@ -14,6 +27,18 @@ const PROJECT_SUCCESS_MODAL_CHANGE_INPUT = "modal/PROJECT_SUCCESS_MODAL_CHANGE_I
 const ADD_TODO_MODAL_ON = "modal/ADD_TODO_MODAL_ON" as const;
 const ADD_TODO_MODAL_OFF = "modal/ADD_TODO_MODAL_OFF" as const;
 const ADD_TODO_MODAL_CHANGE_CONTENT = "modal/ADD_TODO_MODAL_CHANGE_CONTENT" as const;
+
+const APPLY_DETAIL_MODAL_ON = "modal/APPLY_DETAIL_MODAL_ON" as const;
+const APPLY_DETAIL_MODAL_OFF = "modal/APPLY_DETAIL_MODAL_OFF" as const;
+
+const applyDetailModalOn = (payload: ReportApplyDetail) => ({
+  type: APPLY_DETAIL_MODAL_ON,
+  payload
+});
+
+const applyDetailModalOff = () => ({
+  type: APPLY_DETAIL_MODAL_OFF
+});
 
 const addTodoModalOn = () => ({
   type: ADD_TODO_MODAL_ON
@@ -71,7 +96,9 @@ type modalActionType =
   | ReturnType<typeof projectSuccessModalChangeInput>
   | ReturnType<typeof addTodoModalOn>
   | ReturnType<typeof addTodoModalOff>
-  | ReturnType<typeof addTodoModalChangeContent>;
+  | ReturnType<typeof addTodoModalChangeContent>
+  | ReturnType<typeof applyDetailModalOff>
+  | ReturnType<typeof applyDetailModalOn>;
 
 export const modalAction = {
   FORM_MODAL_ON,
@@ -83,7 +110,9 @@ export const modalAction = {
   PROJECT_SUCCESS_MODAL_CHANGE_INPUT,
   ADD_TODO_MODAL_ON,
   ADD_TODO_MODAL_OFF,
-  ADD_TODO_MODAL_CHANGE_CONTENT
+  ADD_TODO_MODAL_CHANGE_CONTENT,
+  APPLY_DETAIL_MODAL_OFF,
+  APPLY_DETAIL_MODAL_ON
 };
 
 export const modalActionCreater = {
@@ -96,7 +125,9 @@ export const modalActionCreater = {
   projectSuccessModalChangeInput,
   addTodoModalOn,
   addTodoModalOff,
-  addTodoModalChangeContent
+  addTodoModalChangeContent,
+  applyDetailModalOn,
+  applyDetailModalOff
 };
 
 export default modalActionType;

@@ -1,4 +1,7 @@
-import modalActionType, { modalAction } from "../../action/modal";
+import modalActionType, {
+  modalAction,
+  modalActionCreater
+} from "../../action/modal";
 
 export interface ModalState {
   title: string;
@@ -21,11 +24,21 @@ export interface AddTodoModalState {
   isOpen: boolean;
 }
 
+export interface ApplyDetailModalState {
+  title?: string;
+  reason?: string;
+  giturl?: string;
+  introduce?: string;
+  type?: "REPORT" | "PROJECT";
+  isOpen: boolean;
+}
+
 interface ModalReducerState {
   formModal: ModalState;
   portfoioModal: PortfolioModalState;
   projectSuccessModal: ProjectSuccessModalState;
   addTodoModal: AddTodoModalState;
+  applyDetailModal: ApplyDetailModalState;
 }
 
 const initialState: ModalReducerState = {
@@ -45,6 +58,9 @@ const initialState: ModalReducerState = {
   addTodoModal: {
     isOpen: false,
     content: ""
+  },
+  applyDetailModal: {
+    isOpen: false
   }
 };
 
@@ -150,6 +166,23 @@ const modalReducer = (
         addTodoModal: {
           ...state.addTodoModal,
           content: action.payload
+        }
+      };
+    }
+    case modalAction.APPLY_DETAIL_MODAL_OFF: {
+      return {
+        ...state,
+        applyDetailModal: {
+          isOpen: false
+        }
+      };
+    }
+    case modalAction.APPLY_DETAIL_MODAL_ON: {
+      return {
+        ...state,
+        applyDetailModal: {
+          isOpen: true,
+          ...action.payload
         }
       };
     }
