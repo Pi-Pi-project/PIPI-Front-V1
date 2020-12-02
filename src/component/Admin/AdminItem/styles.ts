@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 20px 40px;
+  padding: 20px 20px;
   border-bottom: 1px solid #707070;
   display: flex;
   justify-content: space-between;
@@ -10,6 +11,14 @@ export const Container = styled.div`
   > div {
     display: flex;
     align-items: center;
+
+    > a {
+      color: unset;
+      font-size: 20px;
+      margin-left: 10px;
+      font-weight: bold;
+      text-decoration: none;
+    }
   }
 `;
 
