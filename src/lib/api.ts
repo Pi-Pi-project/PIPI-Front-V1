@@ -1,6 +1,6 @@
 import Axios, { AxiosResponse } from "axios";
 
-export const BASE_URL = "http://15.164.245.146";
+export const BASE_URL = "http://3.35.216.218";
 
 export const JWT_TOKEN = "JWT";
 export const REFRESH_TOKEN = "REFRESH";
