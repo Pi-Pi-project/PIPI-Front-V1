@@ -9,6 +9,7 @@ import writeSaga from "./write";
 import managementSaga from "./management";
 import adminLoginSaga from "./adminLogin";
 import adminMainSaga from "./adminMain";
+import chatSaga from "./chat";
 
 function* rootSaga() {
   yield all([
@@ -21,7 +22,8 @@ function* rootSaga() {
     profileSaga(),
     managementSaga(),
     adminLoginSaga(),
-    adminMainSaga()
+    adminMainSaga(),
+    chatSaga()
   ]);
 }
 

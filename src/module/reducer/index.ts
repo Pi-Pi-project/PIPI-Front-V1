@@ -10,6 +10,7 @@ import profile from "./profile";
 import management from "./management";
 import adminLogin from "./AdminLogin";
 import adminMain from "./AdminMain";
+import chat from "./chat";
 
 const rootReducer = combineReducers({
   modal,
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   profile,
   management,
   adminLogin,
-  adminMain
+  adminMain,
+  chat
 });
 
 export type StoreType = ReturnType<typeof rootReducer>;
