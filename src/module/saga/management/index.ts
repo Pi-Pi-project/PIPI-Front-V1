@@ -76,12 +76,9 @@ function* successProjectSaga() {
   }));
   try {
     if (emptyIsInclude([id, giturl, introduce])) {
-      alert("빈칸을 모두 채워주세요");
-      return;
+      throw "empty";
     }
-  } catch (err) {}
 
-  try {
     yield call(requestApiWithAccessToken, "put", "/project/complete", {
       id,
       giturl,
@@ -96,16 +93,21 @@ function* successProjectSaga() {
       })
     );
   } catch (err) {
-    switch (err) {
-      case 405: {
-        alert("이미 완료한 동아리 입니다");
-        return;
-      }
-      case 409: {
-        alert("PM이 아닙니다");
-        return;
-      }
-    }
+    console.log(err);
+    yield put(modalActionCreater.projectSuccessModalOff());
+    yield put(
+      modalActionCreater.formModalOn({
+        title: "실패했습니다",
+        subTitle:
+          err === "empty"
+            ? "빈칸이 존재합니다"
+            : err === 405
+            ? "이미 완료한 동아리 입니다"
+            : err === 409
+            ? "PM이 아닙니다"
+            : "예상치 못한 오류입니다"
+      })
+    );
   }
 }
 
