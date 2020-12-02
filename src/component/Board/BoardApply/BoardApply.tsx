@@ -9,6 +9,7 @@ const BoardApply: FC = () => {
   const { list, isLoading } = useSelector(
     (store: StoreType) => store.board.boardApply
   );
+
   return (
     <div>
       <BoardHeader activeIndex={3} />
