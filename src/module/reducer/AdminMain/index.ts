@@ -3,8 +3,6 @@ import AdminMainAction, { adminMainAction } from "../../action/adminMain";
 export interface ProjectApplyItem {
   projectId: number;
   title: string;
-  giturl: string;
-  introduce: string;
 }
 
 export interface ReportItem {
