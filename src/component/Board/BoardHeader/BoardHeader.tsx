@@ -1,8 +1,11 @@
-import React, { ChangeEvent, FC, useState } from "react";
+import Axios from "axios";
+import React, { ChangeEvent, FC, useEffect, useState } from "react";
 import { useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { magnifyingIconSvg } from "../../../asset";
 import { boardActionCreater } from "../../../module/action/board";
+import { StoreType } from "../../../module/reducer";
 import { LoginedContainer } from "../../../style/GlobalStyle";
 import BoardSearchModal from "../BoardModal/BoardSearchModal";
 import * as S from "./styles";
@@ -16,6 +19,7 @@ const BoardHeader: FC<Props> = ({ activeIndex }) => {
   const openSearchModal = useCallback(() => {
     dispatch(boardActionCreater.changeSearchModal(true));
   }, []);
+
   return (
     <S.Container>
       <LoginedContainer>
