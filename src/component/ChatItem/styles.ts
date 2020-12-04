@@ -9,7 +9,7 @@ export const Container = styled.div<{ isMine: boolean }>`
       justify-content: flex-end;
     `}
   display: flex;
-  margin-top: 3px;
+  margin-top: 6px;
   box-sizing: border-box;
   align-items: flex-end;
 `;
