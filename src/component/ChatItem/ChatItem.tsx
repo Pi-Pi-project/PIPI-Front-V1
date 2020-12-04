@@ -15,12 +15,6 @@ const ChatItem: FC<Props> = ({ isMine, email, content, img, nickname }) => {
           <S.UserWrap>
             <S.Content>{content}</S.Content>
           </S.UserWrap>
-          {nickname && (
-            <S.ProfileWrap>
-              <S.UserName isMine={isMine}>{nickname}</S.UserName>
-              <S.ProfileImg src={getImgSrc(img)} />
-            </S.ProfileWrap>
-          )}
         </>
       ) : (
         <>
