@@ -9,9 +9,29 @@ export const Container = styled.div`
   align-items: center;
 
   > div {
+    position: relative;
     height: 50px;
     display: flex;
     justify-content: space-between;
+  }
+`;
+
+export const RecommendAI = styled.button`
+  position: absolute;
+  top: 95px;
+  background-color: #53af9e;
+  font-size: 20px;
+  border: 2px solid transparent;
+  color: white;
+  right: 0;
+  width: 323px;
+  height: 50px;
+  transition: 300ms all;
+
+  &:hover {
+    color: #53af9e;
+    border-color: #53af9e;
+    background-color: white;
   }
 `;
 
