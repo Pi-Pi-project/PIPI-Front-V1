@@ -1,3 +1,4 @@
+import Axios from "axios";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { JWT_TOKEN, REFRESH_TOKEN, requestApi } from "../../../lib/api";
 import { loginAction, loginActionCreater } from "../../action/login";
@@ -16,6 +17,9 @@ function* requestLoginSaga() {
     window.localStorage.setItem(REFRESH_TOKEN, refreshToken);
 
     yield put(loginActionCreater.successLogin());
+    yield call(Axios.post, "http://172.20.10.2:5000/output", {
+      email: id
+    });
   } catch (errStatus) {
     switch (errStatus) {
       case 400:
