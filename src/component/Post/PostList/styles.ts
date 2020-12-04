@@ -9,6 +9,21 @@ export const Container = styled.div`
   }
 `;
 
+export const AiRecommend = styled.div`
+  margin-bottom: 20px;
+
+  span {
+    color: #53af9e;
+    font-weight: bold;
+    text-align: center;
+  }
+  > div {
+    transition: 1s all;
+    opacity: 1;
+    border: 3px solid #53af9e;
+  }
+`;
+
 export const NoneListDiv = styled.div`
   padding-top: 100px;
   text-align: center;
