@@ -111,6 +111,11 @@ export const SmallText = styled.div`
   font-size: 12px;
 `;
 
+export const ApplyDetailWrap = styled.div`
+  text-align: left;
+  width: 400px;
+`;
+
 export const Title = styled.div`
   font-size: 25px;
   font-weight: bold;
@@ -130,4 +135,9 @@ export const TextArea = styled.textarea`
   ${Title} + & {
     margin-top: 50px;
   }
+`;
+
+export const Span = styled.span`
+  width: 100px;
+  display: inline-block;
 `;
