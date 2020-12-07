@@ -9,7 +9,6 @@ export const Container = styled.div`
   align-items: center;
 
   > div {
-    position: relative;
     height: 50px;
     display: flex;
     justify-content: space-between;
