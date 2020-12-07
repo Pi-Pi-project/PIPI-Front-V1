@@ -4,6 +4,8 @@ import * as S from "./styles";
 import { useHistory } from "react-router";
 import { useCallback } from "react";
 import { getImgSrc, getSkillImgSrc } from "../../../lib/func";
+import { useDispatch } from "react-redux";
+import { modalActionCreater } from "../../../module/action/modal";
 
 const MinePostItem: FC<PostItem> = ({
   title,
@@ -15,6 +17,16 @@ const MinePostItem: FC<PostItem> = ({
   postSkillsets,
   userEmail
 }) => {
+  const dispatch = useDispatch();
+  const makeProject = useCallback(() => {
+    dispatch(
+      modalActionCreater.formModalOn({
+        title: "성공했습니다",
+        subTitle: "프로젝트를 생성했습니다"
+      })
+    );
+  }, []);
+
   const history = useHistory();
   const gotoProfile = useCallback(() => {
     history.push(`/profile?email=${userEmail}`);
@@ -42,6 +54,7 @@ const MinePostItem: FC<PostItem> = ({
             ))}
           </S.SkillSets>
           <S.ButtonWrap>
+            <S.Button onClick={makeProject}>프로젝트 생성</S.Button>
             <S.Button onClick={clickHandler}>신청자 목록</S.Button>
           </S.ButtonWrap>
         </S.BottmWrap>
