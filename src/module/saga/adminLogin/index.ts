@@ -13,16 +13,6 @@ function* requestLoginSaga() {
     (store: StoreType) => store.adminLogin
   );
 
-  if (!email.includes("@") || !email.includes(".")) {
-    yield put(
-      modalActionCreater.formModalOn({
-        title: "실패했습니다",
-        subTitle: "이메일 형식이 잘못됬습니다"
-      })
-    );
-    return;
-  }
-
   try {
     const res = yield call(requestApiWithAccessToken, "post", "/admin/auth", {
       email,
