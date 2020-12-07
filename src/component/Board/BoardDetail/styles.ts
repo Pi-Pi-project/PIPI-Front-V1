@@ -33,6 +33,7 @@ export const Content = styled.div`
   font-weight: bold;
   padding: 10px;
   color: #aea7a7;
+  white-space: pre;
 `;
 
 export const SkillWrap = styled.div`
@@ -91,7 +92,7 @@ export const BannerImg = styled.div<{ src: string }>`
   background: url(${props => props.src}) no-repeat;
   background-position: center;
   margin-top: 15px;
-  background-size: cover;
+  background-size: contain;
 `;
 
 export const ProfileImg = styled.div<{ src: string }>`
