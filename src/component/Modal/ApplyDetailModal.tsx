@@ -23,11 +23,17 @@ const ApplyDetailModal: FC = () => {
           {isReport ? (
             <S.Title>{reason}</S.Title>
           ) : (
-            <>
-              <S.Title>제목 : {title}</S.Title>
-              <S.Title>git : {giturl}</S.Title>
-              <S.Title>설명 : {introduce}</S.Title>
-            </>
+            <S.ApplyDetailWrap>
+              <S.Title>
+                <S.Span>제목</S.Span> {title}
+              </S.Title>
+              <S.Title>
+                <S.Span>깃허브</S.Span> {giturl}
+              </S.Title>
+              <S.Title>
+                <S.Span>설명</S.Span> {introduce}
+              </S.Title>
+            </S.ApplyDetailWrap>
           )}
         </S.Modal>
       </S.Container>
