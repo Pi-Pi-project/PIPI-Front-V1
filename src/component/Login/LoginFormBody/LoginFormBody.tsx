@@ -42,9 +42,6 @@ const LoginFormBody: FC = () => {
           type="password"
           placeholder="비밀번호"
         />
-        <S.ForgotPassword>
-          <Link to="/password">비밀번호를 잊어버리셨나요?</Link>
-        </S.ForgotPassword>
       </div>
     </S.LoginBody>
   );
