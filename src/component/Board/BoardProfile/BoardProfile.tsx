@@ -109,8 +109,6 @@ const BoardProfile: FC = () => {
         <S.FuncWrap>
           <S.FuncText onClick={onProfileEdit}>프로필 수정</S.FuncText>
           <S.Bar>|</S.Bar>
-          <S.FuncText onClick={onPasswordChangeModal}>비밀번호 변경</S.FuncText>
-          <S.Bar>|</S.Bar>
           <S.FuncText onClick={logOutFunc}>로그아웃</S.FuncText>
         </S.FuncWrap>
       </S.Container>
